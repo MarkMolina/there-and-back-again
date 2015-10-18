@@ -8,6 +8,7 @@
 
 #import "CCSearchVC.h"
 #import "CCSearchBarPlugin.h"
+#import "CCSearchDataStore.h"
 
 #import <Masonry/Masonry.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -16,6 +17,7 @@
 
 @property (nonatomic, strong) CCSearchBarPlugin *searchBarPlugin;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSDictionary *tempDict;
 
 @end
 
@@ -80,14 +82,22 @@
 
 - (void)searchBarTextDidChange:(NSString *)searchText {
     
-    NSLog(@"search query: %@", searchText);
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:searchText success:^(NSDictionary *searchResponse) {
+       
+        self.tempDict = searchResponse;
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 5;
+    return ((NSDictionary *)self.tempDict[@"hits"]).count;
 }
 
 #pragma mark - UITableViewDelegate
@@ -99,7 +109,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
     }
     
-    cell.textLabel.text = @"Title here";
+    cell.textLabel.text = ((NSDictionary *)((NSArray *)self.tempDict[@"hits"])[indexPath.row])[@"name"];
     
     return cell;
     
