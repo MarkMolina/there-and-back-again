@@ -10,4 +10,18 @@
 
 @implementation CCBaseModel
 
++ (instancetype)modelFromJSONDictionary:(NSDictionary *)jsonDict {
+    
+    return [[self alloc] initWithJSONDictionary:jsonDict];
+}
+
+- (instancetype)initWithJSONDictionary:(NSDictionary *)jsonDict {
+    
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 @end

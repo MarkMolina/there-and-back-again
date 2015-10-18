@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4D181F3B1BD3FA3A005FF700 /* CCSearchDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D181F3A1BD3FA3A005FF700 /* CCSearchDataStore.m */; settings = {ASSET_TAGS = (); }; };
 		4D181F3F1BD4038B005FF700 /* CCSearchBarPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D181F3E1BD4038B005FF700 /* CCSearchBarPlugin.m */; settings = {ASSET_TAGS = (); }; };
+		4D181F421BD435C9005FF700 /* CCSearchResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D181F411BD435C9005FF700 /* CCSearchResponse.m */; settings = {ASSET_TAGS = (); }; };
+		4D181F451BD438FB005FF700 /* CCHit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D181F441BD438FB005FF700 /* CCHit.m */; settings = {ASSET_TAGS = (); }; };
+		4D181F481BD43969005FF700 /* CCCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D181F471BD43969005FF700 /* CCCategory.m */; settings = {ASSET_TAGS = (); }; };
 		4D2CBB081BD3E0D30027FB31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB071BD3E0D30027FB31 /* main.m */; };
 		4D2CBB131BD3E0D30027FB31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */; };
 		4D2CBB161BD3E0D30027FB31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB141BD3E0D30027FB31 /* LaunchScreen.storyboard */; };
@@ -45,6 +48,12 @@
 		4D181F3A1BD3FA3A005FF700 /* CCSearchDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSearchDataStore.m; sourceTree = "<group>"; };
 		4D181F3D1BD4038B005FF700 /* CCSearchBarPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSearchBarPlugin.h; sourceTree = "<group>"; };
 		4D181F3E1BD4038B005FF700 /* CCSearchBarPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSearchBarPlugin.m; sourceTree = "<group>"; };
+		4D181F401BD435C9005FF700 /* CCSearchResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSearchResponse.h; sourceTree = "<group>"; };
+		4D181F411BD435C9005FF700 /* CCSearchResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSearchResponse.m; sourceTree = "<group>"; };
+		4D181F431BD438FB005FF700 /* CCHit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHit.h; sourceTree = "<group>"; };
+		4D181F441BD438FB005FF700 /* CCHit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHit.m; sourceTree = "<group>"; };
+		4D181F461BD43969005FF700 /* CCCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCategory.h; sourceTree = "<group>"; };
+		4D181F471BD43969005FF700 /* CCCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCategory.m; sourceTree = "<group>"; };
 		4D2CBB031BD3E0D30027FB31 /* Algolia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algolia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2CBB071BD3E0D30027FB31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -209,6 +218,12 @@
 			isa = PBXGroup;
 			children = (
 				4D2CBB3E1BD3E1B70027FB31 /* Base */,
+				4D181F401BD435C9005FF700 /* CCSearchResponse.h */,
+				4D181F411BD435C9005FF700 /* CCSearchResponse.m */,
+				4D181F431BD438FB005FF700 /* CCHit.h */,
+				4D181F441BD438FB005FF700 /* CCHit.m */,
+				4D181F461BD43969005FF700 /* CCCategory.h */,
+				4D181F471BD43969005FF700 /* CCCategory.m */,
 			);
 			name = Models;
 			path = Sources/Models;
@@ -474,10 +489,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D2CBB4E1BD3E35D0027FB31 /* CCHomeVC.m in Sources */,
+				4D181F451BD438FB005FF700 /* CCHit.m in Sources */,
 				4D181F3B1BD3FA3A005FF700 /* CCSearchDataStore.m in Sources */,
 				4D2CBB541BD3E3810027FB31 /* CCSearchVC.m in Sources */,
+				4D181F421BD435C9005FF700 /* CCSearchResponse.m in Sources */,
 				4D2CBB3B1BD3E18A0027FB31 /* AppDelegate.m in Sources */,
 				4D2CBB081BD3E0D30027FB31 /* main.m in Sources */,
+				4D181F481BD43969005FF700 /* CCCategory.m in Sources */,
 				4D2CBB4B1BD3E3160027FB31 /* CCBaseModel.m in Sources */,
 				4D2CBB481BD3E2F60027FB31 /* CCViewController.m in Sources */,
 				4D181F3F1BD4038B005FF700 /* CCSearchBarPlugin.m in Sources */,

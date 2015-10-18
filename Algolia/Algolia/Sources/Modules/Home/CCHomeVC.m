@@ -8,6 +8,7 @@
 
 #import "CCHomeVC.h"
 #import "CCSearchDataStore.h"
+#import "CCSearchResponse.h"
 
 @interface CCHomeVC ()
 
@@ -24,7 +25,7 @@
 
 - (void)testSearch {
     
-    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:@"iphone" success:^(NSDictionary *searchResponse) {
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:@"iphone" success:^(CCSearchResponse *searchResponse) {
         
         NSLog(@"%@", searchResponse);
     } failure:^(NSError *error) {

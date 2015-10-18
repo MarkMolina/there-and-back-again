@@ -7,6 +7,7 @@
 //
 
 #import "CCSearchDataStore.h"
+#import "CCSearchResponse.h"
 
 #import <AlgoliaSearch-Client/ASAPIClient.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -53,7 +54,7 @@
               // answer object contains a "hits" attribute that contains all results
               // each result contains your attributes and a _highlightResult attribute that contains highlighted version of your attributes
               
-              success(answer);
+              success([CCSearchResponse modelFromJSONDictionary:answer]);
               
           } failure:^(ASRemoteIndex *index, ASQuery *query, NSString *errorMessage) {
               
@@ -98,7 +99,7 @@
     
     [self.requestStarted sendNext:nil];
     
-    [self queryWithFullTextQuery:queryString success:^(NSDictionary *searchResponse) {
+    [self queryWithFullTextQuery:queryString success:^(CCSearchResponse *searchResponse) {
         [self.requestCompleted sendNext:searchResponse];
     } failure:^(NSError *error) {
         [self.requestFailed sendNext:error];

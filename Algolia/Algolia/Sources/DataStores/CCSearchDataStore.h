@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^CCSearchDataStoreSuccess)(NSDictionary *searchResponse);
-typedef void (^CCSearchDataStoreFailure)(NSError *error);
-
 @class RACSignal;
+@class CCSearchResponse;
+
+typedef void (^CCSearchDataStoreSuccess)(CCSearchResponse *searchResponse);
+typedef void (^CCSearchDataStoreFailure)(NSError *error);
 
 @interface CCSearchDataStore : NSObject
 
