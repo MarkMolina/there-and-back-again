@@ -16,7 +16,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self setupApplication];
+    
     // Override point for customization after application launch.
+    self.window = [UIWindow new];
+    self.window.frame = UIScreen.mainScreen.bounds;
+    self.window.backgroundColor = UIColor.whiteColor;
+    //self.window.rootViewController =
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -40,6 +48,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Private
+
+- (void)setupApplication {
+    
+    
 }
 
 @end
