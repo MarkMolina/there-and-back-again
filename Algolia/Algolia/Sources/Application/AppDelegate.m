@@ -7,9 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "CCHomeVC.h"
+#import "CCSearchVC.h"
+#import "CCMenuVC.h"
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
@@ -22,7 +24,15 @@
     self.window = [UIWindow new];
     self.window.frame = UIScreen.mainScreen.bounds;
     self.window.backgroundColor = UIColor.whiteColor;
-    //self.window.rootViewController =
+    
+    CCHomeVC *homeVC = [CCHomeVC new];
+    CCSearchVC *searchVC = [CCSearchVC new];
+    CCMenuVC *menuVC = [CCMenuVC new];
+    
+    UITabBarController *tabbarController = [UITabBarController new];
+    tabbarController.viewControllers = @[homeVC, searchVC, menuVC];
+    
+    self.window.rootViewController = tabbarController;
     [self.window makeKeyAndVisible];
     
     return YES;

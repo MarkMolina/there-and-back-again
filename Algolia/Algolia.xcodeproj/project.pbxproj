@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		4D2CBB081BD3E0D30027FB31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB071BD3E0D30027FB31 /* main.m */; };
-		4D2CBB111BD3E0D30027FB31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB0F1BD3E0D30027FB31 /* Main.storyboard */; };
 		4D2CBB131BD3E0D30027FB31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */; };
 		4D2CBB161BD3E0D30027FB31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB141BD3E0D30027FB31 /* LaunchScreen.storyboard */; };
 		4D2CBB211BD3E0D30027FB31 /* AlgoliaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB201BD3E0D30027FB31 /* AlgoliaTests.m */; };
 		4D2CBB2C1BD3E0D30027FB31 /* AlgoliaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB2B1BD3E0D30027FB31 /* AlgoliaUITests.m */; };
 		4D2CBB3B1BD3E18A0027FB31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB3A1BD3E18A0027FB31 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
+		4D2CBB481BD3E2F60027FB31 /* CCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB471BD3E2F60027FB31 /* CCViewController.m */; settings = {ASSET_TAGS = (); }; };
+		4D2CBB4B1BD3E3160027FB31 /* CCBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB4A1BD3E3160027FB31 /* CCBaseModel.m */; settings = {ASSET_TAGS = (); }; };
+		4D2CBB4E1BD3E35D0027FB31 /* CCHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB4D1BD3E35D0027FB31 /* CCHomeVC.m */; settings = {ASSET_TAGS = (); }; };
+		4D2CBB511BD3E3720027FB31 /* CCMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB501BD3E3720027FB31 /* CCMenuVC.m */; settings = {ASSET_TAGS = (); }; };
+		4D2CBB541BD3E3810027FB31 /* CCSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB531BD3E3810027FB31 /* CCSearchVC.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,6 @@
 /* Begin PBXFileReference section */
 		4D2CBB031BD3E0D30027FB31 /* Algolia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algolia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2CBB071BD3E0D30027FB31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4D2CBB101BD3E0D30027FB31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D2CBB151BD3E0D30027FB31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D2CBB171BD3E0D30027FB31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +51,16 @@
 		4D2CBB2D1BD3E0D30027FB31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D2CBB391BD3E18A0027FB31 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Sources/Application/AppDelegate.h; sourceTree = "<group>"; };
 		4D2CBB3A1BD3E18A0027FB31 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Sources/Application/AppDelegate.m; sourceTree = "<group>"; };
+		4D2CBB461BD3E2F60027FB31 /* CCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCViewController.h; sourceTree = "<group>"; };
+		4D2CBB471BD3E2F60027FB31 /* CCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCViewController.m; sourceTree = "<group>"; };
+		4D2CBB491BD3E3160027FB31 /* CCBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBaseModel.h; sourceTree = "<group>"; };
+		4D2CBB4A1BD3E3160027FB31 /* CCBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBaseModel.m; sourceTree = "<group>"; };
+		4D2CBB4C1BD3E35D0027FB31 /* CCHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHomeVC.h; sourceTree = "<group>"; };
+		4D2CBB4D1BD3E35D0027FB31 /* CCHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHomeVC.m; sourceTree = "<group>"; };
+		4D2CBB4F1BD3E3720027FB31 /* CCMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMenuVC.h; sourceTree = "<group>"; };
+		4D2CBB501BD3E3720027FB31 /* CCMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMenuVC.m; sourceTree = "<group>"; };
+		4D2CBB521BD3E3810027FB31 /* CCSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSearchVC.h; sourceTree = "<group>"; };
+		4D2CBB531BD3E3810027FB31 /* CCSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSearchVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,16 +111,11 @@
 		4D2CBB051BD3E0D30027FB31 /* Algolia */ = {
 			isa = PBXGroup;
 			children = (
-				4D2CBB3C1BD3E19E0027FB31 /* Application */,
-				4D2CBB3D1BD3E1B70027FB31 /* Models */,
-				4D2CBB3F1BD3E1B70027FB31 /* Modules */,
+				4D2CBB451BD3E2CC0027FB31 /* Sources */,
 				4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */,
 				4D2CBB171BD3E0D30027FB31 /* Info.plist */,
 				4D2CBB141BD3E0D30027FB31 /* LaunchScreen.storyboard */,
-				4D2CBB0F1BD3E0D30027FB31 /* Main.storyboard */,
 				4D2CBB061BD3E0D30027FB31 /* Supporting Files */,
-				4D2CBB431BD3E1B70027FB31 /* ViewControllers */,
-				4D2CBB441BD3E1B70027FB31 /* Views */,
 			);
 			path = Algolia;
 			sourceTree = "<group>";
@@ -159,6 +167,8 @@
 		4D2CBB3E1BD3E1B70027FB31 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				4D2CBB491BD3E3160027FB31 /* CCBaseModel.h */,
+				4D2CBB4A1BD3E3160027FB31 /* CCBaseModel.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -177,6 +187,8 @@
 		4D2CBB401BD3E1B70027FB31 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4D2CBB4C1BD3E35D0027FB31 /* CCHomeVC.h */,
+				4D2CBB4D1BD3E35D0027FB31 /* CCHomeVC.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -184,6 +196,8 @@
 		4D2CBB411BD3E1B70027FB31 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				4D2CBB4F1BD3E3720027FB31 /* CCMenuVC.h */,
+				4D2CBB501BD3E3720027FB31 /* CCMenuVC.m */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -191,6 +205,8 @@
 		4D2CBB421BD3E1B70027FB31 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				4D2CBB521BD3E3810027FB31 /* CCSearchVC.h */,
+				4D2CBB531BD3E3810027FB31 /* CCSearchVC.m */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -198,6 +214,8 @@
 		4D2CBB431BD3E1B70027FB31 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4D2CBB461BD3E2F60027FB31 /* CCViewController.h */,
+				4D2CBB471BD3E2F60027FB31 /* CCViewController.m */,
 			);
 			name = ViewControllers;
 			path = Sources/ViewControllers;
@@ -209,6 +227,18 @@
 			);
 			name = Views;
 			path = Sources/Views;
+			sourceTree = "<group>";
+		};
+		4D2CBB451BD3E2CC0027FB31 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4D2CBB3C1BD3E19E0027FB31 /* Application */,
+				4D2CBB3D1BD3E1B70027FB31 /* Models */,
+				4D2CBB3F1BD3E1B70027FB31 /* Modules */,
+				4D2CBB431BD3E1B70027FB31 /* ViewControllers */,
+				4D2CBB441BD3E1B70027FB31 /* Views */,
+			);
+			name = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,7 +346,6 @@
 			files = (
 				4D2CBB161BD3E0D30027FB31 /* LaunchScreen.storyboard in Resources */,
 				4D2CBB131BD3E0D30027FB31 /* Assets.xcassets in Resources */,
-				4D2CBB111BD3E0D30027FB31 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,8 +370,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D2CBB4E1BD3E35D0027FB31 /* CCHomeVC.m in Sources */,
+				4D2CBB541BD3E3810027FB31 /* CCSearchVC.m in Sources */,
 				4D2CBB3B1BD3E18A0027FB31 /* AppDelegate.m in Sources */,
 				4D2CBB081BD3E0D30027FB31 /* main.m in Sources */,
+				4D2CBB4B1BD3E3160027FB31 /* CCBaseModel.m in Sources */,
+				4D2CBB481BD3E2F60027FB31 /* CCViewController.m in Sources */,
+				4D2CBB511BD3E3720027FB31 /* CCMenuVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,14 +412,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4D2CBB0F1BD3E0D30027FB31 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D2CBB101BD3E0D30027FB31 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4D2CBB141BD3E0D30027FB31 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
