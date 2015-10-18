@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D181F351BD3EFA0005FF700 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D181F341BD3EFA0005FF700 /* data.json */; settings = {ASSET_TAGS = (); }; };
+		4D181F371BD3F40B005FF700 /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D181F361BD3F40B005FF700 /* contacts.json */; settings = {ASSET_TAGS = (); }; };
+		4D181F3B1BD3FA3A005FF700 /* CCSearchDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D181F3A1BD3FA3A005FF700 /* CCSearchDataStore.m */; settings = {ASSET_TAGS = (); }; };
 		4D2CBB081BD3E0D30027FB31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB071BD3E0D30027FB31 /* main.m */; };
 		4D2CBB131BD3E0D30027FB31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */; };
 		4D2CBB161BD3E0D30027FB31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB141BD3E0D30027FB31 /* LaunchScreen.storyboard */; };
@@ -39,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D181F341BD3EFA0005FF700 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		4D181F361BD3F40B005FF700 /* contacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contacts.json; sourceTree = "<group>"; };
+		4D181F391BD3FA3A005FF700 /* CCSearchDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSearchDataStore.h; sourceTree = "<group>"; };
+		4D181F3A1BD3FA3A005FF700 /* CCSearchDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSearchDataStore.m; sourceTree = "<group>"; };
 		4D2CBB031BD3E0D30027FB31 /* Algolia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algolia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2CBB071BD3E0D30027FB31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,6 +115,16 @@
 				F7515E69DD6DBE99D8F9DE1D /* Pods-Algolia.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		4D181F381BD3FA21005FF700 /* DataStores */ = {
+			isa = PBXGroup;
+			children = (
+				4D181F391BD3FA3A005FF700 /* CCSearchDataStore.h */,
+				4D181F3A1BD3FA3A005FF700 /* CCSearchDataStore.m */,
+			);
+			name = DataStores;
+			path = Sources/DataStores;
 			sourceTree = "<group>";
 		};
 		4D2CBAFA1BD3E0D30027FB31 = {
@@ -182,6 +199,8 @@
 		4D2CBB3D1BD3E1B70027FB31 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4D181F361BD3F40B005FF700 /* contacts.json */,
+				4D181F341BD3EFA0005FF700 /* data.json */,
 				4D2CBB3E1BD3E1B70027FB31 /* Base */,
 			);
 			name = Models;
@@ -257,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				4D2CBB3C1BD3E19E0027FB31 /* Application */,
+				4D181F381BD3FA21005FF700 /* DataStores */,
 				4D2CBB3D1BD3E1B70027FB31 /* Models */,
 				4D2CBB3F1BD3E1B70027FB31 /* Modules */,
 				4D2CBB431BD3E1B70027FB31 /* ViewControllers */,
@@ -371,7 +391,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D181F371BD3F40B005FF700 /* contacts.json in Resources */,
 				4D2CBB161BD3E0D30027FB31 /* LaunchScreen.storyboard in Resources */,
+				4D181F351BD3EFA0005FF700 /* data.json in Resources */,
 				4D2CBB131BD3E0D30027FB31 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D2CBB4E1BD3E35D0027FB31 /* CCHomeVC.m in Sources */,
+				4D181F3B1BD3FA3A005FF700 /* CCSearchDataStore.m in Sources */,
 				4D2CBB541BD3E3810027FB31 /* CCSearchVC.m in Sources */,
 				4D2CBB3B1BD3E18A0027FB31 /* AppDelegate.m in Sources */,
 				4D2CBB081BD3E0D30027FB31 /* main.m in Sources */,

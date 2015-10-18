@@ -11,6 +11,8 @@
 #import "CCSearchVC.h"
 #import "CCMenuVC.h"
 
+#import "CCSearchDataStore.h"
+
 @interface AppDelegate ()
 @end
 
@@ -63,7 +65,6 @@
 #pragma mark - Private
 
 - (void)setupApplication {
-    
     
 }
 

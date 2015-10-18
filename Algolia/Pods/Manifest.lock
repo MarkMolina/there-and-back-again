@@ -20,14 +20,18 @@ PODS:
   - AFNetworking/UIKit (2.6.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AlgoliaSearch-Client (3.6.3):
+    - AFNetworking (~> 2.2)
   - Masonry (0.6.3)
 
 DEPENDENCIES:
   - AFNetworking
+  - AlgoliaSearch-Client (~> 3.5)
   - Masonry
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
+  AlgoliaSearch-Client: 62adfb408a0a94c4201157ab96c4eb335461587d
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
 
 COCOAPODS: 0.39.0
