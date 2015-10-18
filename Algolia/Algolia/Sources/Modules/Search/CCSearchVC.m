@@ -23,6 +23,7 @@
 @property (nonatomic, strong) CCSearchBarPlugin *searchBarPlugin;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CCSearchResponse *searchResponse;
+@property (nonatomic, strong) NSArray *recentSearches;
 
 @end
 
@@ -33,7 +34,13 @@
     self.title = @"Search";
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.recentSearches = [[NSUserDefaults standardUserDefaults] objectForKey:@"recent_searches"];
+    if (!self.recentSearches) {
+        self.recentSearches = [NSArray new];
+    }
+    
     [self createViews];
+    
 }
 
 #pragma mark - Private
@@ -86,9 +93,37 @@
     [self.tableView registerNib:searchSuggestionCellNib forCellReuseIdentifier:@"CCSearchSuggestionCell"];
 }
 
+- (void)saveRecentSearches {
+    
+    if (self.searchResponse.hits.count) {
+        NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:@"recent_searches"];
+        NSMutableArray *mutableArray = [NSMutableArray new];
+        
+        if (![array containsObject:self.searchResponse.query]) {
+            [mutableArray addObject:self.searchResponse.query];
+        }
+        
+        for (NSString *string in [array reverseObjectEnumerator]) {
+            [mutableArray addObject:string];
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setObject:mutableArray.copy forKey:@"recent_searches"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        self.recentSearches = mutableArray.copy;
+        [self.tableView reloadData];
+    }
+}
+
 #pragma mark - CCSearchBarPlugin
 
 - (void)searchBarTextDidChange:(NSString *)searchText {
+    
+    if (!searchText.length) {
+        self.searchResponse = nil;
+        [self.tableView reloadData];
+        return;
+    }
     
     [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:searchText success:^(CCSearchResponse *searchResponse) {
        
@@ -104,26 +139,36 @@
 
 - (void)searchBarSearchButtonClicked {
     
-    
+    [self saveRecentSearches];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.searchResponse.hits.count;
+    return self.searchResponse.hits.count ? self.searchResponse.hits.count :self.recentSearches.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    CCSearchSuggestionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CCSearchSuggestionCell" forIndexPath:indexPath];
-    
-    CCHit *hit = self.searchResponse.hits[indexPath.row];
-    cell.hit = hit;
-    cell.highLightString = self.searchResponse.query;
-    
-    return cell;
-    
+    if (self.searchResponse.hits.count) {
+        CCSearchSuggestionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CCSearchSuggestionCell" forIndexPath:indexPath];
+        
+        CCHit *hit = self.searchResponse.hits[indexPath.row];
+        cell.hit = hit;
+        cell.highLightString = self.searchResponse.query;
+        
+        return cell;
+    } else {
+        UITableViewCell *tableviewCell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        if (!tableviewCell) {
+            tableviewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        }
+        
+        tableviewCell.textLabel.text = self.recentSearches[indexPath.row];
+        
+        return tableviewCell;
+    }
 }
 
 #pragma mark - UITableViewDelegate
