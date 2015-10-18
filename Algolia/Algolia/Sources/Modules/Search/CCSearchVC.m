@@ -13,6 +13,8 @@
 #import "CCHit.h"
 #import "CCCategory.h"
 
+#import "CCSearchSuggestionCell.h"
+
 #import <Masonry/Masonry.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
@@ -79,6 +81,9 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    
+    UINib *searchSuggestionCellNib = [UINib nibWithNibName:@"CCSearchSuggestionCell" bundle:nil];
+    [self.tableView registerNib:searchSuggestionCellNib forCellReuseIdentifier:@"CCSearchSuggestionCell"];
 }
 
 #pragma mark - CCSearchBarPlugin
@@ -88,12 +93,18 @@
     [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:searchText success:^(CCSearchResponse *searchResponse) {
        
         self.searchResponse = searchResponse;
+        [self.tableView reloadData];
         
     } failure:^(NSError *error) {
         
     }];
     
-    [self.tableView reloadData];
+    
+}
+
+- (void)searchBarSearchButtonClicked {
+    
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -103,19 +114,22 @@
     return self.searchResponse.hits.count;
 }
 
-#pragma mark - UITableViewDelegate
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
-    }
+    CCSearchSuggestionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CCSearchSuggestionCell" forIndexPath:indexPath];
     
     CCHit *hit = self.searchResponse.hits[indexPath.row];
-    cell.textLabel.text = hit.name;
+    cell.hit = hit;
+    cell.highLightString = self.searchResponse.query;
     
     return cell;
+    
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     
 }
 

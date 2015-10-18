@@ -90,8 +90,8 @@
 
 - (RACSignal *)rac_foundObjects {
     return [[self.requestCompleted deliverOn:[RACScheduler mainThreadScheduler]]
-            filter:^BOOL(NSDictionary *searchResponse) {
-                return searchResponse.count > 0;
+            filter:^BOOL(CCSearchResponse *searchResponse) {
+                return searchResponse.hits.count > 0;
             }];
 }
 

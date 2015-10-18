@@ -14,6 +14,7 @@
 
 @optional
 - (void)searchBarTextDidChange:(NSString *)searchText;
+- (void)searchBarSearchButtonClicked;
 
 @end
 

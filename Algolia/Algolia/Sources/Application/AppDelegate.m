@@ -39,6 +39,7 @@
     CCMenuVC *menuVC = [CCMenuVC new];
     
     UITabBarController *tabbarController = [UITabBarController new];
+    tabbarController.tabBar.translucent = NO;
     tabbarController.viewControllers = @[homeVC, searchNavigationController, menuVC];
     
     self.window.rootViewController = tabbarController;

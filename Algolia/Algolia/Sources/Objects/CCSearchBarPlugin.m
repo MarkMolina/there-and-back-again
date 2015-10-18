@@ -159,7 +159,7 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
         bounds.origin.x += leftMargin;
         bounds.size.width -= leftMargin;
         UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:bounds];
-        searchBar.placeholder = @"Search";
+        searchBar.placeholder = @"Search by name, description or brand";
         searchBar.backgroundColor = [UIColor whiteColor];
         searchBar.showsCancelButton = YES;
         searchBar.alpha = 0;
@@ -257,6 +257,10 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    if ([self.delegate respondsToSelector:@selector(searchBarSearchButtonClicked)]) {
+        [self.delegate searchBarSearchButtonClicked];
+    }
 }
 
 @end
