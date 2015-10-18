@@ -33,6 +33,7 @@
     // Search View Controller
     CCSearchVC *searchVC = [CCSearchVC new];
     UINavigationController *searchNavigationController = [[UINavigationController alloc] initWithRootViewController:searchVC];
+    searchNavigationController.navigationBar.translucent = NO;
     
     // Menu View Controller
     CCMenuVC *menuVC = [CCMenuVC new];
