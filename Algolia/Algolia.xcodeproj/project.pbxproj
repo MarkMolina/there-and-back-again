@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4D2CBB081BD3E0D30027FB31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB071BD3E0D30027FB31 /* main.m */; };
-		4D2CBB0B1BD3E0D30027FB31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB0A1BD3E0D30027FB31 /* AppDelegate.m */; };
-		4D2CBB0E1BD3E0D30027FB31 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB0D1BD3E0D30027FB31 /* ViewController.m */; };
 		4D2CBB111BD3E0D30027FB31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB0F1BD3E0D30027FB31 /* Main.storyboard */; };
 		4D2CBB131BD3E0D30027FB31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */; };
 		4D2CBB161BD3E0D30027FB31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB141BD3E0D30027FB31 /* LaunchScreen.storyboard */; };
 		4D2CBB211BD3E0D30027FB31 /* AlgoliaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB201BD3E0D30027FB31 /* AlgoliaTests.m */; };
 		4D2CBB2C1BD3E0D30027FB31 /* AlgoliaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB2B1BD3E0D30027FB31 /* AlgoliaUITests.m */; };
+		4D2CBB3B1BD3E18A0027FB31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB3A1BD3E18A0027FB31 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,10 +36,6 @@
 /* Begin PBXFileReference section */
 		4D2CBB031BD3E0D30027FB31 /* Algolia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algolia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2CBB071BD3E0D30027FB31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4D2CBB091BD3E0D30027FB31 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		4D2CBB0A1BD3E0D30027FB31 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4D2CBB0C1BD3E0D30027FB31 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4D2CBB0D1BD3E0D30027FB31 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4D2CBB101BD3E0D30027FB31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D2CBB151BD3E0D30027FB31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +46,8 @@
 		4D2CBB271BD3E0D30027FB31 /* AlgoliaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgoliaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2CBB2B1BD3E0D30027FB31 /* AlgoliaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlgoliaUITests.m; sourceTree = "<group>"; };
 		4D2CBB2D1BD3E0D30027FB31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D2CBB391BD3E18A0027FB31 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Sources/Application/AppDelegate.h; sourceTree = "<group>"; };
+		4D2CBB3A1BD3E18A0027FB31 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Sources/Application/AppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,15 +98,16 @@
 		4D2CBB051BD3E0D30027FB31 /* Algolia */ = {
 			isa = PBXGroup;
 			children = (
-				4D2CBB091BD3E0D30027FB31 /* AppDelegate.h */,
-				4D2CBB0A1BD3E0D30027FB31 /* AppDelegate.m */,
-				4D2CBB0C1BD3E0D30027FB31 /* ViewController.h */,
-				4D2CBB0D1BD3E0D30027FB31 /* ViewController.m */,
-				4D2CBB0F1BD3E0D30027FB31 /* Main.storyboard */,
+				4D2CBB3C1BD3E19E0027FB31 /* Application */,
+				4D2CBB3D1BD3E1B70027FB31 /* Models */,
+				4D2CBB3F1BD3E1B70027FB31 /* Modules */,
 				4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */,
-				4D2CBB141BD3E0D30027FB31 /* LaunchScreen.storyboard */,
 				4D2CBB171BD3E0D30027FB31 /* Info.plist */,
+				4D2CBB141BD3E0D30027FB31 /* LaunchScreen.storyboard */,
+				4D2CBB0F1BD3E0D30027FB31 /* Main.storyboard */,
 				4D2CBB061BD3E0D30027FB31 /* Supporting Files */,
+				4D2CBB431BD3E1B70027FB31 /* ViewControllers */,
+				4D2CBB441BD3E1B70027FB31 /* Views */,
 			);
 			path = Algolia;
 			sourceTree = "<group>";
@@ -138,6 +136,79 @@
 				4D2CBB2D1BD3E0D30027FB31 /* Info.plist */,
 			);
 			path = AlgoliaUITests;
+			sourceTree = "<group>";
+		};
+		4D2CBB3C1BD3E19E0027FB31 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				4D2CBB391BD3E18A0027FB31 /* AppDelegate.h */,
+				4D2CBB3A1BD3E18A0027FB31 /* AppDelegate.m */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		4D2CBB3D1BD3E1B70027FB31 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4D2CBB3E1BD3E1B70027FB31 /* Base */,
+			);
+			name = Models;
+			path = Sources/Models;
+			sourceTree = "<group>";
+		};
+		4D2CBB3E1BD3E1B70027FB31 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		4D2CBB3F1BD3E1B70027FB31 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				4D2CBB401BD3E1B70027FB31 /* Home */,
+				4D2CBB411BD3E1B70027FB31 /* Menu */,
+				4D2CBB421BD3E1B70027FB31 /* Search */,
+			);
+			name = Modules;
+			path = Sources/Modules;
+			sourceTree = "<group>";
+		};
+		4D2CBB401BD3E1B70027FB31 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4D2CBB411BD3E1B70027FB31 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		4D2CBB421BD3E1B70027FB31 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		4D2CBB431BD3E1B70027FB31 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			path = Sources/ViewControllers;
+			sourceTree = "<group>";
+		};
+		4D2CBB441BD3E1B70027FB31 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			path = Sources/Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,8 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D2CBB0E1BD3E0D30027FB31 /* ViewController.m in Sources */,
-				4D2CBB0B1BD3E0D30027FB31 /* AppDelegate.m in Sources */,
+				4D2CBB3B1BD3E18A0027FB31 /* AppDelegate.m in Sources */,
 				4D2CBB081BD3E0D30027FB31 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
