@@ -23,15 +23,27 @@ PODS:
   - AlgoliaSearch-Client (3.6.3):
     - AFNetworking (~> 2.2)
   - Masonry (0.6.3)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - Reveal-iOS-SDK (1.6.0)
 
 DEPENDENCIES:
   - AFNetworking
   - AlgoliaSearch-Client (~> 3.5)
   - Masonry
+  - ReactiveCocoa (~> 2.5)
+  - Reveal-iOS-SDK
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
   AlgoliaSearch-Client: 62adfb408a0a94c4201157ab96c4eb335461587d
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  Reveal-iOS-SDK: 6afacafd60f66f2822c09c43ae60562881bfab6e
 
 COCOAPODS: 0.39.0

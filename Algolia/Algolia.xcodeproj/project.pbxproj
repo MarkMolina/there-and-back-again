@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D181F351BD3EFA0005FF700 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D181F341BD3EFA0005FF700 /* data.json */; settings = {ASSET_TAGS = (); }; };
-		4D181F371BD3F40B005FF700 /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D181F361BD3F40B005FF700 /* contacts.json */; settings = {ASSET_TAGS = (); }; };
 		4D181F3B1BD3FA3A005FF700 /* CCSearchDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D181F3A1BD3FA3A005FF700 /* CCSearchDataStore.m */; settings = {ASSET_TAGS = (); }; };
+		4D181F3F1BD4038B005FF700 /* CCSearchBarPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D181F3E1BD4038B005FF700 /* CCSearchBarPlugin.m */; settings = {ASSET_TAGS = (); }; };
 		4D2CBB081BD3E0D30027FB31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB071BD3E0D30027FB31 /* main.m */; };
 		4D2CBB131BD3E0D30027FB31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */; };
 		4D2CBB161BD3E0D30027FB31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB141BD3E0D30027FB31 /* LaunchScreen.storyboard */; };
@@ -21,7 +20,7 @@
 		4D2CBB4E1BD3E35D0027FB31 /* CCHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB4D1BD3E35D0027FB31 /* CCHomeVC.m */; settings = {ASSET_TAGS = (); }; };
 		4D2CBB511BD3E3720027FB31 /* CCMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB501BD3E3720027FB31 /* CCMenuVC.m */; settings = {ASSET_TAGS = (); }; };
 		4D2CBB541BD3E3810027FB31 /* CCSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB531BD3E3810027FB31 /* CCSearchVC.m */; settings = {ASSET_TAGS = (); }; };
-		CC0ABC1E0BCBBAFF5893D0B1 /* libPods-Algolia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD08DB6AD2156FBBDB4D6210 /* libPods-Algolia.a */; };
+		CDF9FEAAC15EE0C094BBEDAA /* libPods-Algolia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2F2FEF1FCB494F1FE8B93B /* libPods-Algolia.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4D181F341BD3EFA0005FF700 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
-		4D181F361BD3F40B005FF700 /* contacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contacts.json; sourceTree = "<group>"; };
 		4D181F391BD3FA3A005FF700 /* CCSearchDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSearchDataStore.h; sourceTree = "<group>"; };
 		4D181F3A1BD3FA3A005FF700 /* CCSearchDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSearchDataStore.m; sourceTree = "<group>"; };
+		4D181F3D1BD4038B005FF700 /* CCSearchBarPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSearchBarPlugin.h; sourceTree = "<group>"; };
+		4D181F3E1BD4038B005FF700 /* CCSearchBarPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSearchBarPlugin.m; sourceTree = "<group>"; };
 		4D2CBB031BD3E0D30027FB31 /* Algolia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algolia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2CBB071BD3E0D30027FB31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,7 +69,7 @@
 		4D2CBB521BD3E3810027FB31 /* CCSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSearchVC.h; sourceTree = "<group>"; };
 		4D2CBB531BD3E3810027FB31 /* CCSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSearchVC.m; sourceTree = "<group>"; };
 		794B66D049743057C9CDA56E /* Pods-Algolia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Algolia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Algolia/Pods-Algolia.debug.xcconfig"; sourceTree = "<group>"; };
-		DD08DB6AD2156FBBDB4D6210 /* libPods-Algolia.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Algolia.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB2F2FEF1FCB494F1FE8B93B /* libPods-Algolia.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Algolia.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7515E69DD6DBE99D8F9DE1D /* Pods-Algolia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Algolia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Algolia/Pods-Algolia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC0ABC1E0BCBBAFF5893D0B1 /* libPods-Algolia.a in Frameworks */,
+				CDF9FEAAC15EE0C094BBEDAA /* libPods-Algolia.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +102,7 @@
 		0CBDD1EA495A9C838B97EC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DD08DB6AD2156FBBDB4D6210 /* libPods-Algolia.a */,
+				BB2F2FEF1FCB494F1FE8B93B /* libPods-Algolia.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -125,6 +124,16 @@
 			);
 			name = DataStores;
 			path = Sources/DataStores;
+			sourceTree = "<group>";
+		};
+		4D181F3C1BD40382005FF700 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				4D181F3D1BD4038B005FF700 /* CCSearchBarPlugin.h */,
+				4D181F3E1BD4038B005FF700 /* CCSearchBarPlugin.m */,
+			);
+			name = Objects;
+			path = Sources/Objects;
 			sourceTree = "<group>";
 		};
 		4D2CBAFA1BD3E0D30027FB31 = {
@@ -199,8 +208,6 @@
 		4D2CBB3D1BD3E1B70027FB31 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4D181F361BD3F40B005FF700 /* contacts.json */,
-				4D181F341BD3EFA0005FF700 /* data.json */,
 				4D2CBB3E1BD3E1B70027FB31 /* Base */,
 			);
 			name = Models;
@@ -279,6 +286,7 @@
 				4D181F381BD3FA21005FF700 /* DataStores */,
 				4D2CBB3D1BD3E1B70027FB31 /* Models */,
 				4D2CBB3F1BD3E1B70027FB31 /* Modules */,
+				4D181F3C1BD40382005FF700 /* Objects */,
 				4D2CBB431BD3E1B70027FB31 /* ViewControllers */,
 				4D2CBB441BD3E1B70027FB31 /* Views */,
 			);
@@ -391,9 +399,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D181F371BD3F40B005FF700 /* contacts.json in Resources */,
 				4D2CBB161BD3E0D30027FB31 /* LaunchScreen.storyboard in Resources */,
-				4D181F351BD3EFA0005FF700 /* data.json in Resources */,
 				4D2CBB131BD3E0D30027FB31 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,6 +480,7 @@
 				4D2CBB081BD3E0D30027FB31 /* main.m in Sources */,
 				4D2CBB4B1BD3E3160027FB31 /* CCBaseModel.m in Sources */,
 				4D2CBB481BD3E2F60027FB31 /* CCViewController.m in Sources */,
+				4D181F3F1BD4038B005FF700 /* CCSearchBarPlugin.m in Sources */,
 				4D2CBB511BD3E3720027FB31 /* CCMenuVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

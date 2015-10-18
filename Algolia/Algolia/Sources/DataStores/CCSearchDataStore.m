@@ -9,10 +9,15 @@
 #import "CCSearchDataStore.h"
 
 #import <AlgoliaSearch-Client/ASAPIClient.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface CCSearchDataStore()
 
 @property (nonatomic, strong) ASRemoteIndex *index;
+@property (nonatomic, strong) RACSubject *requestStarted;
+@property (nonatomic, strong) RACSubject *requestFailed;
+@property (nonatomic, strong) RACSubject *requestCompleted;
+
 
 @end
 
@@ -56,6 +61,63 @@
               NSError *error = [NSError errorWithDomain:@"some-domain" code:600 userInfo:@{NSLocalizedDescriptionKey : errorMessage}];
               failure(error);
           }];
+}
+
+- (RACSubject *)requestStarted {
+    if (nil == _requestStarted) {
+        _requestStarted = [RACSubject subject];
+        
+    }
+    return _requestStarted;
+}
+
+- (RACSubject *)requestFailed {
+    if (nil == _requestFailed) {
+        _requestFailed = [RACSubject subject];
+        
+    }
+    return _requestFailed;
+}
+
+- (RACSubject *)requestCompleted {
+    if (nil == _requestCompleted) {
+        _requestCompleted = [RACSubject subject];
+        
+    }
+    return _requestCompleted;
+}
+
+- (RACSignal *)rac_foundObjects {
+    return [[self.requestCompleted deliverOn:[RACScheduler mainThreadScheduler]]
+            filter:^BOOL(NSDictionary *searchResponse) {
+                return searchResponse.count > 0;
+            }];
+}
+
+- (void)queryWithFullTextQuery:(NSString *)queryString {
+    
+    [self.requestStarted sendNext:nil];
+    
+    [self queryWithFullTextQuery:queryString success:^(NSDictionary *searchResponse) {
+        [self.requestCompleted sendNext:searchResponse];
+    } failure:^(NSError *error) {
+        [self.requestFailed sendNext:error];
+    }];
+}
+
+- (RACSignal *)rac_operationStarted {
+    return self.requestStarted;
+}
+
+- (RACSignal *)rac_operationEnded {
+    return [[RACSignal merge:@[
+                               self.requestCompleted,
+                               self.requestFailed,
+                               ]] deliverOn:[RACScheduler mainThreadScheduler]];
+}
+
+- (RACSignal *)rac_operationFailed {
+    return self.requestFailed;
 }
 
 @end

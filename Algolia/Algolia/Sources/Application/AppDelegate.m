@@ -27,12 +27,18 @@
     self.window.frame = UIScreen.mainScreen.bounds;
     self.window.backgroundColor = UIColor.whiteColor;
     
+    // Home View Controller
     CCHomeVC *homeVC = [CCHomeVC new];
+    
+    // Search View Controller
     CCSearchVC *searchVC = [CCSearchVC new];
+    UINavigationController *searchNavigationController = [[UINavigationController alloc] initWithRootViewController:searchVC];
+    
+    // Menu View Controller
     CCMenuVC *menuVC = [CCMenuVC new];
     
     UITabBarController *tabbarController = [UITabBarController new];
-    tabbarController.viewControllers = @[homeVC, searchVC, menuVC];
+    tabbarController.viewControllers = @[homeVC, searchNavigationController, menuVC];
     
     self.window.rootViewController = tabbarController;
     [self.window makeKeyAndVisible];
