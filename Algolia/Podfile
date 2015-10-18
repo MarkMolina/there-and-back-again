@@ -7,6 +7,7 @@ target 'Algolia' do
 
 pod 'Masonry'
 pod 'AFNetworking'
+pod 'AlgoliaSearch-Client', '~> 3.5'
 
 end
 

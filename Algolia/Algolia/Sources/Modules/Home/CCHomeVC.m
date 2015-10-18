@@ -7,6 +7,7 @@
 //
 
 #import "CCHomeVC.h"
+#import "CCSearchDataStore.h"
 
 @interface CCHomeVC ()
 
@@ -18,6 +19,18 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor greenColor];
+    [self testSearch];
+}
+
+- (void)testSearch {
+    
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:@"iphone" success:^(NSDictionary *searchResponse) {
+        
+        NSLog(@"%@", searchResponse);
+    } failure:^(NSError *error) {
+        
+        NSLog(@"Error: %@", error.localizedDescription);
+    }];
 }
 
 @end
