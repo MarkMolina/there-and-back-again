@@ -18,6 +18,7 @@
 @interface CCSearchRestultsVC () <CCSearchBarPluginDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSString *query;
+@property (nonatomic, strong) NSArray *facets;
 @property (nonatomic, strong) CCSearchBarPlugin *searchBarPlugin;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CCSearchResponse *searchResponse;
@@ -28,16 +29,17 @@
 
 @implementation CCSearchRestultsVC
 
-+ (instancetype)viewControllerWithSearchQuery:(NSString *)query {
++ (instancetype)viewControllerWithSearchQuery:(NSString *)query facets:(NSArray *)facets {
     
-    return [[self alloc] initWithSearchQuery:query];
+    return [[self alloc] initWithSearchQuery:query facets:facets];
 }
 
-- (instancetype)initWithSearchQuery:(NSString *)query {
+- (instancetype)initWithSearchQuery:(NSString *)query facets:(NSArray *)facets {
     
     self = [super init];
     if (self) {
         _query = query;
+        _facets = facets;
     }
     
     return self;
@@ -102,7 +104,7 @@
 - (void)retrieveSearchResults {
     
     self.currentPage = 0;
-    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query success:^(CCSearchResponse *searchResponse) {
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query facets:self.facets success:^(CCSearchResponse *searchResponse) {
         
         self.searchResponse = searchResponse;
         [self.tableView reloadData];
@@ -115,7 +117,7 @@
 - (void)retrieveNextSearchResults {
     
     self.currentPage++;
-    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query page:self.currentPage success:^(CCSearchResponse *searchResponse) {
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query page:self.currentPage facets:self.facets success:^(CCSearchResponse *searchResponse) {
         
         NSArray *array = [self.searchResponse.hits arrayByAddingObjectsFromArray:searchResponse.hits];
         self.searchResponse.hits = array;

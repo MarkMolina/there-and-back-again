@@ -55,10 +55,24 @@
 
 - (void)queryWithFullTextQuery:(NSString *)queryString page:(NSInteger)page success:(CCSearchDataStoreSuccess)success failure:(CCSearchDataStoreFailure)failure {
     
-    ASQuery *query = [ASQuery queryWithFullTextQuery:queryString];
+    [self queryWithFullTextQuery:queryString page:page facets:nil success:success failure:failure];
+}
+
+- (void)queryWithFullTextQuery:(NSString *)queryString facets:(NSArray *)facets success:(CCSearchDataStoreSuccess)success failure:(CCSearchDataStoreFailure)failure {
+    
+    [self queryWithFullTextQuery:queryString page:0 facets:facets success:success failure:failure];
+}
+
+- (void)queryWithFullTextQuery:(NSString *)queryString page:(NSInteger)page facets:(NSArray *)facets success:(CCSearchDataStoreSuccess)success failure:(CCSearchDataStoreFailure)failure {
+    
+    ASQuery *query = [ASQuery queryWithFullTextQuery:@"*"];
     
     if (page) {
         query.page = page;
+    }
+    
+    if (facets) {
+        query.facetFilters = facets;
     }
     
     [self.index search:query
@@ -74,7 +88,7 @@
                    NSError *error = [NSError errorWithDomain:@"some-domain" code:600 userInfo:@{NSLocalizedDescriptionKey : errorMessage}];
                    failure(error);
                }];
-
+    
 }
 
 - (NSArray *)retrieveCategories {
