@@ -8,6 +8,7 @@
 
 #import "CCResultsCell.h"
 #import "CCHit.h"
+#import "CCSearchStyle.h"
 
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
@@ -30,6 +31,7 @@
     [self setDescriptionText];
     [self setPriceText];
     [self setIconImage];
+    [self hightLightLabel];
 }
 
 - (void)setTitleText {
@@ -50,6 +52,27 @@
 - (void)setIconImage {
     
     [self.image setImageWithURL:self.hit.imageUrl];
+}
+
+- (void)hightLightLabel {
+    
+    if (!self.hit.highLightedString) {
+        return;
+    }
+    
+    NSRange range = [self.hit.name rangeOfString:self.hit.highLightedString options:NSCaseInsensitiveSearch];
+    if (range.location != NSNotFound) {
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.hit.name];
+        
+        [attributedString beginEditing];
+        [attributedString addAttribute:NSForegroundColorAttributeName
+                                 value:[CCSearchStyle highLightBlue]
+                                 range:range];
+        
+        [attributedString endEditing];
+        
+        self.titleLabel.attributedText = attributedString;
+    }
 }
 
 @end
