@@ -63,9 +63,10 @@
 }
 
 - (void)createSearchButton {
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
-                                                                                           target:self
-                                                                                           action:@selector(showSearch:)];
+    
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FilterIcon"] style:UIButtonTypeCustom target:self action:@selector(showSearch:)],[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+                                                                                                                                                                           target:self
+                                                                                                                                                                           action:@selector(showSearch:)]];
 }
 
 - (void)createSearchBar {
