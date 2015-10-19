@@ -65,7 +65,7 @@
 
 - (void)queryWithFullTextQuery:(NSString *)queryString page:(NSInteger)page facets:(NSArray *)facets success:(CCSearchDataStoreSuccess)success failure:(CCSearchDataStoreFailure)failure {
     
-    ASQuery *query = [ASQuery queryWithFullTextQuery:@"*"];
+    ASQuery *query = [ASQuery queryWithFullTextQuery:queryString];
     
     if (page) {
         query.page = page;

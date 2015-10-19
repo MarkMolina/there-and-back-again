@@ -43,18 +43,17 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     self.title = @"Search";
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.recentSearches = [[NSUserDefaults standardUserDefaults] objectForKey:@"recent_searches"];
-    if (!self.recentSearches) {
-        self.recentSearches = [NSArray new];
-    }
-    
     [self createViews];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
+    
+    self.recentSearches = [[NSUserDefaults standardUserDefaults] objectForKey:@"recent_searches"];
+    if (!self.recentSearches) {
+        self.recentSearches = [NSArray new];
+    }
     
     // Make the seachbar the first responder
     [self showSearch:nil];
@@ -112,28 +111,6 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     [self.tableView registerNib:categoryCellNib forCellReuseIdentifier:@"CCCategoryCell"];
 }
 
-- (void)saveRecentSearches {
-    
-    if (self.searchResponse.hits.count) {
-        NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:@"recent_searches"];
-        NSMutableArray *mutableArray = [NSMutableArray new];
-        
-        if (![array containsObject:self.searchResponse.query]) {
-            [mutableArray addObject:self.searchResponse.query];
-        }
-        
-        for (NSString *string in [array reverseObjectEnumerator]) {
-            [mutableArray addObject:string];
-        }
-        
-        [[NSUserDefaults standardUserDefaults] setObject:mutableArray.copy forKey:@"recent_searches"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        self.recentSearches = mutableArray.copy;
-        [self.tableView reloadData];
-    }
-}
-
 #pragma mark - CCSearchBarPlugin
 
 - (void)searchBarTextDidChange:(NSString *)searchText {
@@ -164,7 +141,9 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
 
 - (void)searchBarSearchButtonClicked {
     
-    [self saveRecentSearches];
+    [self saveRecentSearchesFromSearchResponse:self.searchResponse];
+    self.recentSearches = [[NSUserDefaults standardUserDefaults] objectForKey:@"recent_searches"];
+    [self.tableView reloadData];
     
     [self pushSearchResultsVCWithQuery:self.searchResponse.query facets:nil];
 }

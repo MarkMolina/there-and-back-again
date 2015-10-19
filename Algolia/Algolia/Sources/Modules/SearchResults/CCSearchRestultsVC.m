@@ -22,7 +22,6 @@
 @property (nonatomic, strong) CCSearchBarPlugin *searchBarPlugin;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CCSearchResponse *searchResponse;
-@property (nonatomic, strong) NSArray *recentSearches;
 @property (nonatomic, assign) NSInteger currentPage;
 
 @end
@@ -160,6 +159,35 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+#pragma mark - CCSearchBarPlugin
+
+- (void)searchBarTextDidChange:(NSString *)searchText {
+    
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:searchText facets:self.facets success:^(CCSearchResponse *searchResponse) {
+        
+        self.searchResponse = searchResponse;
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
+}
+
+- (void)searchBarCancelButtonClicked {
+    
+    [self.tableView reloadData];
+}
+
+- (void)searchBarSearchButtonClicked {
+    
+    [self saveRecentSearchesFromSearchResponse:self.searchResponse];
+    [self.tableView reloadData];
+    
+    //[self pushSearchResultsVCWithQuery:self.searchResponse.query facets:nil];
 }
 
 @end
