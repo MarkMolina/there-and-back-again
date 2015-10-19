@@ -28,7 +28,8 @@
     self.window.backgroundColor = UIColor.whiteColor;
     
     // Home View Controller
-    CCHomeVC *homeVC = [CCHomeVC new];
+    UIStoryboard *homeStoryBoard = [UIStoryboard storyboardWithName:@"HomeStoryBoard" bundle:nil];
+    CCHomeVC *homeVC = [homeStoryBoard instantiateViewControllerWithIdentifier:@"HomeStoryBoard"];
     
     // Search View Controller
     CCSearchVC *searchVC = [CCSearchVC new];
@@ -41,6 +42,18 @@
     UITabBarController *tabbarController = [UITabBarController new];
     tabbarController.tabBar.translucent = NO;
     tabbarController.viewControllers = @[homeVC, searchNavigationController, menuVC];
+    
+    UITabBarItem *homeTabbarItem = [tabbarController.tabBar.items objectAtIndex:0];
+    homeTabbarItem.title = @"Home";
+    [homeTabbarItem setImage:[UIImage imageNamed:@"HomeTab"]];
+
+    UITabBarItem *searchTabbarItem = [tabbarController.tabBar.items objectAtIndex:1];
+    searchTabbarItem.title = @"Search";
+    [searchTabbarItem setImage:[UIImage imageNamed:@"SearchTab"]];
+    
+    UITabBarItem *accountTabbarItem = [tabbarController.tabBar.items objectAtIndex:2];
+    accountTabbarItem.title = @"My Account";
+    [accountTabbarItem setImage:[UIImage imageNamed:@"AccountTab"]];
     
     self.window.rootViewController = tabbarController;
     [self.window makeKeyAndVisible];

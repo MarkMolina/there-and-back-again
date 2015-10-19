@@ -25,9 +25,10 @@
 		4D2CBB3B1BD3E18A0027FB31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB3A1BD3E18A0027FB31 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
 		4D2CBB481BD3E2F60027FB31 /* CCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB471BD3E2F60027FB31 /* CCViewController.m */; settings = {ASSET_TAGS = (); }; };
 		4D2CBB4B1BD3E3160027FB31 /* CCBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB4A1BD3E3160027FB31 /* CCBaseModel.m */; settings = {ASSET_TAGS = (); }; };
-		4D2CBB4E1BD3E35D0027FB31 /* CCHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB4D1BD3E35D0027FB31 /* CCHomeVC.m */; settings = {ASSET_TAGS = (); }; };
 		4D2CBB511BD3E3720027FB31 /* CCMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB501BD3E3720027FB31 /* CCMenuVC.m */; settings = {ASSET_TAGS = (); }; };
 		4D2CBB541BD3E3810027FB31 /* CCSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB531BD3E3810027FB31 /* CCSearchVC.m */; settings = {ASSET_TAGS = (); }; };
+		4D5EEFBC1BD553FE00B8BE43 /* CCHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EEFBA1BD553FE00B8BE43 /* CCHomeVC.m */; settings = {ASSET_TAGS = (); }; };
+		4D5EEFC11BD5569900B8BE43 /* HomeStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D5EEFC01BD5569900B8BE43 /* HomeStoryBoard.storyboard */; settings = {ASSET_TAGS = (); }; };
 		CDF9FEAAC15EE0C094BBEDAA /* libPods-Algolia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2F2FEF1FCB494F1FE8B93B /* libPods-Algolia.a */; };
 /* End PBXBuildFile section */
 
@@ -84,12 +85,13 @@
 		4D2CBB471BD3E2F60027FB31 /* CCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCViewController.m; sourceTree = "<group>"; };
 		4D2CBB491BD3E3160027FB31 /* CCBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBaseModel.h; sourceTree = "<group>"; };
 		4D2CBB4A1BD3E3160027FB31 /* CCBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBaseModel.m; sourceTree = "<group>"; };
-		4D2CBB4C1BD3E35D0027FB31 /* CCHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHomeVC.h; sourceTree = "<group>"; };
-		4D2CBB4D1BD3E35D0027FB31 /* CCHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHomeVC.m; sourceTree = "<group>"; };
 		4D2CBB4F1BD3E3720027FB31 /* CCMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMenuVC.h; sourceTree = "<group>"; };
 		4D2CBB501BD3E3720027FB31 /* CCMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMenuVC.m; sourceTree = "<group>"; };
 		4D2CBB521BD3E3810027FB31 /* CCSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSearchVC.h; sourceTree = "<group>"; };
 		4D2CBB531BD3E3810027FB31 /* CCSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSearchVC.m; sourceTree = "<group>"; };
+		4D5EEFB91BD553FE00B8BE43 /* CCHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHomeVC.h; sourceTree = "<group>"; };
+		4D5EEFBA1BD553FE00B8BE43 /* CCHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHomeVC.m; sourceTree = "<group>"; };
+		4D5EEFC01BD5569900B8BE43 /* HomeStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeStoryBoard.storyboard; sourceTree = "<group>"; };
 		794B66D049743057C9CDA56E /* Pods-Algolia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Algolia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Algolia/Pods-Algolia.debug.xcconfig"; sourceTree = "<group>"; };
 		BB2F2FEF1FCB494F1FE8B93B /* libPods-Algolia.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Algolia.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7515E69DD6DBE99D8F9DE1D /* Pods-Algolia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Algolia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Algolia/Pods-Algolia.release.xcconfig"; sourceTree = "<group>"; };
@@ -285,8 +287,9 @@
 		4D2CBB401BD3E1B70027FB31 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				4D2CBB4C1BD3E35D0027FB31 /* CCHomeVC.h */,
-				4D2CBB4D1BD3E35D0027FB31 /* CCHomeVC.m */,
+				4D5EEFB91BD553FE00B8BE43 /* CCHomeVC.h */,
+				4D5EEFBA1BD553FE00B8BE43 /* CCHomeVC.m */,
+				4D5EEFC01BD5569900B8BE43 /* HomeStoryBoard.storyboard */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 			files = (
 				4D181F581BD4444C005FF700 /* CCSearchSuggestionCell.xib in Resources */,
 				4D2CBB161BD3E0D30027FB31 /* LaunchScreen.storyboard in Resources */,
+				4D5EEFC11BD5569900B8BE43 /* HomeStoryBoard.storyboard in Resources */,
 				4D2CBB131BD3E0D30027FB31 /* Assets.xcassets in Resources */,
 				4D181F631BD45B1C005FF700 /* CCRecentSearchHeader.xib in Resources */,
 			);
@@ -527,8 +531,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D2CBB4E1BD3E35D0027FB31 /* CCHomeVC.m in Sources */,
 				4D181F451BD438FB005FF700 /* CCHit.m in Sources */,
+				4D5EEFBC1BD553FE00B8BE43 /* CCHomeVC.m in Sources */,
 				4D181F3B1BD3FA3A005FF700 /* CCSearchDataStore.m in Sources */,
 				4D2CBB541BD3E3810027FB31 /* CCSearchVC.m in Sources */,
 				4D181F421BD435C9005FF700 /* CCSearchResponse.m in Sources */,
