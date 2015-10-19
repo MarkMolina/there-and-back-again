@@ -50,19 +50,31 @@
 
 - (void)queryWithFullTextQuery:(NSString *)queryString success:(CCSearchDataStoreSuccess)success failure:(CCSearchDataStoreFailure)failure {
     
-    [self.index search:[ASQuery queryWithFullTextQuery:queryString]
-          success:^(ASRemoteIndex *index, ASQuery *query, NSDictionary *answer) {
-              // answer object contains a "hits" attribute that contains all results
-              // each result contains your attributes and a _highlightResult attribute that contains highlighted version of your attributes
-              
-              success([CCSearchResponse modelFromJSONDictionary:answer]);
-              
-          } failure:^(ASRemoteIndex *index, ASQuery *query, NSString *errorMessage) {
-              
-              NSLog(@"Error: %@", errorMessage);
-              NSError *error = [NSError errorWithDomain:@"some-domain" code:600 userInfo:@{NSLocalizedDescriptionKey : errorMessage}];
-              failure(error);
-          }];
+    [self queryWithFullTextQuery:queryString page:0 success:success failure:failure];
+}
+
+- (void)queryWithFullTextQuery:(NSString *)queryString page:(NSInteger)page success:(CCSearchDataStoreSuccess)success failure:(CCSearchDataStoreFailure)failure {
+    
+    ASQuery *query = [ASQuery queryWithFullTextQuery:queryString];
+    
+    if (page) {
+        query.page = page;
+    }
+    
+    [self.index search:query
+               success:^(ASRemoteIndex *index, ASQuery *query, NSDictionary *answer) {
+                   // answer object contains a "hits" attribute that contains all results
+                   // each result contains your attributes and a _highlightResult attribute that contains highlighted version of your attributes
+                   
+                   success([CCSearchResponse modelFromJSONDictionary:answer]);
+                   
+               } failure:^(ASRemoteIndex *index, ASQuery *query, NSString *errorMessage) {
+                   
+                   NSLog(@"Error: %@", errorMessage);
+                   NSError *error = [NSError errorWithDomain:@"some-domain" code:600 userInfo:@{NSLocalizedDescriptionKey : errorMessage}];
+                   failure(error);
+               }];
+
 }
 
 - (NSArray *)retrieveCategories {

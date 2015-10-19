@@ -22,6 +22,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CCSearchResponse *searchResponse;
 @property (nonatomic, strong) NSArray *recentSearches;
+@property (nonatomic, assign) NSInteger currentPage;
 
 @end
 
@@ -100,12 +101,29 @@
 
 - (void)retrieveSearchResults {
     
+    self.currentPage = 0;
     [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query success:^(CCSearchResponse *searchResponse) {
         
         self.searchResponse = searchResponse;
         [self.tableView reloadData];
     } failure:^(NSError *error) {
        
+        NSLog(@"Implement failure");
+    }];
+}
+
+- (void)retrieveNextSearchResults {
+    
+    self.currentPage++;
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query page:self.currentPage success:^(CCSearchResponse *searchResponse) {
+        
+        NSArray *array = [self.searchResponse.hits arrayByAddingObjectsFromArray:searchResponse.hits];
+        self.searchResponse.hits = array;
+        
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        
         NSLog(@"Implement failure");
     }];
 }
@@ -123,6 +141,10 @@
     
     CCHit *hit = self.searchResponse.hits[indexPath.row];
     [resultsCell setHit:hit];
+    
+    if (indexPath.row + 5 >= self.searchResponse.hits.count) {
+        [self retrieveNextSearchResults];
+    }
     
     return resultsCell;
 }
