@@ -27,6 +27,7 @@
 		4D2CBB4B1BD3E3160027FB31 /* CCBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB4A1BD3E3160027FB31 /* CCBaseModel.m */; settings = {ASSET_TAGS = (); }; };
 		4D2CBB511BD3E3720027FB31 /* CCMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB501BD3E3720027FB31 /* CCMenuVC.m */; settings = {ASSET_TAGS = (); }; };
 		4D2CBB541BD3E3810027FB31 /* CCSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB531BD3E3810027FB31 /* CCSearchVC.m */; settings = {ASSET_TAGS = (); }; };
+		4D4A921E1BD58E9300C934EC /* CCFilterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4A921D1BD58E9300C934EC /* CCFilterVC.m */; settings = {ASSET_TAGS = (); }; };
 		4D5EEFBC1BD553FE00B8BE43 /* CCHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EEFBA1BD553FE00B8BE43 /* CCHomeVC.m */; settings = {ASSET_TAGS = (); }; };
 		4D5EEFC11BD5569900B8BE43 /* HomeStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D5EEFC01BD5569900B8BE43 /* HomeStoryBoard.storyboard */; settings = {ASSET_TAGS = (); }; };
 		4D5EEFC51BD5658A00B8BE43 /* CCCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EEFC31BD5658A00B8BE43 /* CCCategoryCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -94,6 +95,8 @@
 		4D2CBB501BD3E3720027FB31 /* CCMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMenuVC.m; sourceTree = "<group>"; };
 		4D2CBB521BD3E3810027FB31 /* CCSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSearchVC.h; sourceTree = "<group>"; };
 		4D2CBB531BD3E3810027FB31 /* CCSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSearchVC.m; sourceTree = "<group>"; };
+		4D4A921C1BD58E9300C934EC /* CCFilterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFilterVC.h; sourceTree = "<group>"; };
+		4D4A921D1BD58E9300C934EC /* CCFilterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCFilterVC.m; sourceTree = "<group>"; };
 		4D5EEFB91BD553FE00B8BE43 /* CCHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHomeVC.h; sourceTree = "<group>"; };
 		4D5EEFBA1BD553FE00B8BE43 /* CCHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHomeVC.m; sourceTree = "<group>"; };
 		4D5EEFC01BD5569900B8BE43 /* HomeStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeStoryBoard.storyboard; sourceTree = "<group>"; };
@@ -295,6 +298,7 @@
 		4D2CBB3F1BD3E1B70027FB31 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4D4A921B1BD58E7F00C934EC /* Filter */,
 				4D2CBB401BD3E1B70027FB31 /* Home */,
 				4D2CBB411BD3E1B70027FB31 /* Menu */,
 				4D2CBB421BD3E1B70027FB31 /* Search */,
@@ -366,6 +370,15 @@
 				4D2CBB441BD3E1B70027FB31 /* Views */,
 			);
 			name = Sources;
+			sourceTree = "<group>";
+		};
+		4D4A921B1BD58E7F00C934EC /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				4D4A921C1BD58E9300C934EC /* CCFilterVC.h */,
+				4D4A921D1BD58E9300C934EC /* CCFilterVC.m */,
+			);
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		4D5EEFC71BD5682800B8BE43 /* SearchResults */ = {
@@ -577,6 +590,7 @@
 				4D181F3F1BD4038B005FF700 /* CCSearchBarPlugin.m in Sources */,
 				4D181F5B1BD45329005FF700 /* CCSearchStyle.m in Sources */,
 				4D181F571BD4444C005FF700 /* CCSearchSuggestionCell.m in Sources */,
+				4D4A921E1BD58E9300C934EC /* CCFilterVC.m in Sources */,
 				4D5EEFCA1BD5683600B8BE43 /* CCSearchRestultsVC.m in Sources */,
 				4D2CBB511BD3E3720027FB31 /* CCMenuVC.m in Sources */,
 				4D5EEFC51BD5658A00B8BE43 /* CCCategoryCell.m in Sources */,

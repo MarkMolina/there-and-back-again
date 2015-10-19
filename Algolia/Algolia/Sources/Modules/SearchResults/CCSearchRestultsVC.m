@@ -7,6 +7,7 @@
 //
 
 #import "CCSearchRestultsVC.h"
+#import "CCFilterVC.h"
 #import "CCSearchBarPlugin.h"
 #import "CCSearchDataStore.h"
 #import "CCSearchResponse.h"
@@ -14,6 +15,7 @@
 
 #import <Masonry/Masonry.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <RESideMenu/RESideMenu.h>
 
 @interface CCSearchRestultsVC () <CCSearchBarPluginDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -23,6 +25,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CCSearchResponse *searchResponse;
 @property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, strong) RESideMenu *sideMenu;
 
 @end
 
@@ -57,14 +60,22 @@
 
 - (void)createViews {
     
-    [self createSearchButton];
+    [self createFilterVC];
+    [self createBarButtonItems];
     [self createSearchBar];
     [self createTableView];
 }
 
-- (void)createSearchButton {
+- (void)createFilterVC {
     
-    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FilterIcon"] style:UIButtonTypeCustom target:self action:@selector(showSearch:)],[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+    CCFilterVC *filterVC = [CCFilterVC new];
+    self.sideMenu = (RESideMenu *)[[UIApplication sharedApplication] keyWindow].rootViewController;
+    self.sideMenu.rightMenuViewController = filterVC;
+}
+
+- (void)createBarButtonItems {
+    
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FilterIcon"] style:UIBarButtonItemStyleDone target:self action:@selector(showFilter:)],[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
                                                                                                                                                                            target:self
                                                                                                                                                                            action:@selector(showSearch:)]];
 }
@@ -84,6 +95,11 @@
 - (void)showSearch:(id)sender {
     
     [self.searchBarPlugin showSearchBar];
+}
+
+- (void)showFilter:(id)sender {
+    
+    [self.sideMenu presentRightMenuViewController];
 }
 
 - (void)createTableView {

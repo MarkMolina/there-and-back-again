@@ -159,8 +159,8 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
 
 - (void)pushSearchResultsVCWithQuery:(NSString *)query facets:(NSArray *)facets {
     
-    CCSearchRestultsVC *vc = [[CCSearchRestultsVC alloc] initWithSearchQuery:query facets:facets];
-    [self.navigationController pushViewController:vc animated:YES];
+    CCSearchRestultsVC *searchVC = [[CCSearchRestultsVC alloc] initWithSearchQuery:query facets:facets];
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
 #pragma mark - UITableViewDataSource

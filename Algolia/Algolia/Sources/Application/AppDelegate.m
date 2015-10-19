@@ -13,6 +13,8 @@
 
 #import "CCSearchDataStore.h"
 
+#import <RESideMenu/RESideMenu.h>
+
 @interface AppDelegate ()
 @end
 
@@ -55,7 +57,11 @@
     accountTabbarItem.title = @"My Account";
     [accountTabbarItem setImage:[UIImage imageNamed:@"AccountTab"]];
     
-    self.window.rootViewController = tabbarController;
+    RESideMenu *sideMenu = [[RESideMenu alloc] initWithContentViewController:tabbarController leftMenuViewController:nil rightMenuViewController:nil];
+    sideMenu.backgroundImage = [UIImage imageNamed:@"SolidBG"];
+    sideMenu.panGestureEnabled = NO;
+    
+    self.window.rootViewController = sideMenu;
     [self.window makeKeyAndVisible];
     
     return YES;
