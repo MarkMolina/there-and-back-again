@@ -23,8 +23,8 @@
         _type = jsonDict[@"type"];
         _price = jsonDict[@"price"];
         _priceRange = jsonDict[@"price_range"];
-        _imageUrl = jsonDict[@"image"];
-        _directUrl = jsonDict[@"url"];
+        _imageUrl = [NSURL URLWithString:jsonDict[@"image"]];
+        _directUrl = [NSURL URLWithString:jsonDict[@"url"]];
         _freeShipping = jsonDict[@"free_shipping"];
         _popularity = jsonDict[@"popularity"];
         _highLightedString = [self highLightedFromHTMLString:jsonDict[@"_highlightResult"][@"name"][@"value"]];

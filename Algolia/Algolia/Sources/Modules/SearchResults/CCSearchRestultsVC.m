@@ -10,6 +10,7 @@
 #import "CCSearchBarPlugin.h"
 #import "CCSearchDataStore.h"
 #import "CCSearchResponse.h"
+#import "CCResultsCell.h"
 
 #import <Masonry/Masonry.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -47,6 +48,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self createViews];
+    [self retrieveSearchResults];
 }
 
 #pragma mark - Private
@@ -84,16 +86,56 @@
 - (void)createTableView {
     
     self.tableView = [UITableView new];
-    //self.tableView.dataSource = self;
-    //self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
     
-    //UINib *searchSuggestionCellNib = [UINib nibWithNibName:@"CCSearchSuggestionCell" bundle:nil];
-    //[self.tableView registerNib:searchSuggestionCellNib forCellReuseIdentifier:@"CCSearchSuggestionCell"];
+    UINib *resultsCell = [UINib nibWithNibName:@"CCResultsCell" bundle:nil];
+    [self.tableView registerNib:resultsCell forCellReuseIdentifier:@"CCResultsCell"];
+}
+
+- (void)retrieveSearchResults {
+    
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query success:^(CCSearchResponse *searchResponse) {
+        
+        self.searchResponse = searchResponse;
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+       
+        NSLog(@"Implement failure");
+    }];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return self.searchResponse.hits.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CCResultsCell *resultsCell = [tableView dequeueReusableCellWithIdentifier:@"CCResultsCell" forIndexPath:indexPath];
+    
+    CCHit *hit = self.searchResponse.hits[indexPath.row];
+    [resultsCell setHit:hit];
+    
+    return resultsCell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 130.f;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 @end

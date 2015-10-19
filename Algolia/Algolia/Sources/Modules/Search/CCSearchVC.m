@@ -166,7 +166,7 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     
     [self saveRecentSearches];
     
-    [self pushSearchResultsVC];
+    [self pushSearchResultsVCWithQuery:self.searchResponse.query];
 }
 
 - (BOOL)shouldShowRecentSearches {
@@ -178,9 +178,9 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     return NO;
 }
 
-- (void)pushSearchResultsVC {
+- (void)pushSearchResultsVCWithQuery:(NSString *)query {
     
-    CCSearchRestultsVC *vc = [[CCSearchRestultsVC alloc] initWithSearchQuery:self.searchResponse.query];
+    CCSearchRestultsVC *vc = [[CCSearchRestultsVC alloc] initWithSearchQuery:query];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -257,8 +257,7 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
         return;
     } else {
         [self.searchBarPlugin hideSearchBar];
-        
-        [self pushSearchResultsVC];
+        [self pushSearchResultsVCWithQuery:self.recentSearches[indexPath.row]];
         return;
     }
     

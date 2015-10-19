@@ -32,6 +32,8 @@
 		4D5EEFC51BD5658A00B8BE43 /* CCCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EEFC31BD5658A00B8BE43 /* CCCategoryCell.m */; settings = {ASSET_TAGS = (); }; };
 		4D5EEFC61BD5658A00B8BE43 /* CCCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D5EEFC41BD5658A00B8BE43 /* CCCategoryCell.xib */; settings = {ASSET_TAGS = (); }; };
 		4D5EEFCA1BD5683600B8BE43 /* CCSearchRestultsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EEFC91BD5683600B8BE43 /* CCSearchRestultsVC.m */; settings = {ASSET_TAGS = (); }; };
+		4D5EEFCE1BD5709B00B8BE43 /* CCResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EEFCC1BD5709B00B8BE43 /* CCResultsCell.m */; settings = {ASSET_TAGS = (); }; };
+		4D5EEFCF1BD5709B00B8BE43 /* CCResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D5EEFCD1BD5709B00B8BE43 /* CCResultsCell.xib */; settings = {ASSET_TAGS = (); }; };
 		CDF9FEAAC15EE0C094BBEDAA /* libPods-Algolia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2F2FEF1FCB494F1FE8B93B /* libPods-Algolia.a */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +102,9 @@
 		4D5EEFC41BD5658A00B8BE43 /* CCCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCCategoryCell.xib; sourceTree = "<group>"; };
 		4D5EEFC81BD5683600B8BE43 /* CCSearchRestultsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSearchRestultsVC.h; sourceTree = "<group>"; };
 		4D5EEFC91BD5683600B8BE43 /* CCSearchRestultsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSearchRestultsVC.m; sourceTree = "<group>"; };
+		4D5EEFCB1BD5709B00B8BE43 /* CCResultsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCResultsCell.h; sourceTree = "<group>"; };
+		4D5EEFCC1BD5709B00B8BE43 /* CCResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCResultsCell.m; sourceTree = "<group>"; };
+		4D5EEFCD1BD5709B00B8BE43 /* CCResultsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCResultsCell.xib; sourceTree = "<group>"; };
 		794B66D049743057C9CDA56E /* Pods-Algolia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Algolia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Algolia/Pods-Algolia.debug.xcconfig"; sourceTree = "<group>"; };
 		BB2F2FEF1FCB494F1FE8B93B /* libPods-Algolia.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Algolia.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7515E69DD6DBE99D8F9DE1D /* Pods-Algolia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Algolia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Algolia/Pods-Algolia.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +182,9 @@
 				4D5EEFC21BD5658A00B8BE43 /* CCCategoryCell.h */,
 				4D5EEFC31BD5658A00B8BE43 /* CCCategoryCell.m */,
 				4D5EEFC41BD5658A00B8BE43 /* CCCategoryCell.xib */,
+				4D5EEFCB1BD5709B00B8BE43 /* CCResultsCell.h */,
+				4D5EEFCC1BD5709B00B8BE43 /* CCResultsCell.m */,
+				4D5EEFCD1BD5709B00B8BE43 /* CCResultsCell.xib */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -475,6 +483,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D5EEFCF1BD5709B00B8BE43 /* CCResultsCell.xib in Resources */,
 				4D181F581BD4444C005FF700 /* CCSearchSuggestionCell.xib in Resources */,
 				4D2CBB161BD3E0D30027FB31 /* LaunchScreen.storyboard in Resources */,
 				4D5EEFC11BD5569900B8BE43 /* HomeStoryBoard.storyboard in Resources */,
@@ -557,6 +566,7 @@
 				4D5EEFBC1BD553FE00B8BE43 /* CCHomeVC.m in Sources */,
 				4D181F3B1BD3FA3A005FF700 /* CCSearchDataStore.m in Sources */,
 				4D2CBB541BD3E3810027FB31 /* CCSearchVC.m in Sources */,
+				4D5EEFCE1BD5709B00B8BE43 /* CCResultsCell.m in Sources */,
 				4D181F421BD435C9005FF700 /* CCSearchResponse.m in Sources */,
 				4D2CBB3B1BD3E18A0027FB31 /* AppDelegate.m in Sources */,
 				4D2CBB081BD3E0D30027FB31 /* main.m in Sources */,
