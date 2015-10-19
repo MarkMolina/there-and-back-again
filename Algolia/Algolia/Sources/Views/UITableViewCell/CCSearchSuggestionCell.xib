@@ -32,7 +32,7 @@
             </tableViewCellContentView>
             <animations/>
             <connections>
-                <outlet property="nameLabel" destination="qkP-Xk-IrA" id="4gK-M8-32T"/>
+                <outlet property="nameLabel" destination="qkP-Xk-IrA" id="Zrt-Hy-sJV"/>
             </connections>
         </tableViewCell>
     </objects>

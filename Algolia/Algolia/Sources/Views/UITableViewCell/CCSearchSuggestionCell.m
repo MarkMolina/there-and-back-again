@@ -12,8 +12,6 @@
 
 @interface CCSearchSuggestionCell()
 
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-
 @end
 
 @implementation CCSearchSuggestionCell
@@ -22,17 +20,16 @@
     
     _hit = hit;
     self.nameLabel.text = hit.name;
-}
-
-- (void)setHighLightString:(NSString *)highLightString {
-    
-    _highLightString = highLightString;
     [self hightLightLabel];
 }
 
 - (void)hightLightLabel {
     
-    NSRange range = [self.hit.name rangeOfString:self.highLightString options:NSCaseInsensitiveSearch];
+    if (!self.hit.highLightedString) {
+        return;
+    }
+    
+    NSRange range = [self.hit.name rangeOfString:self.hit.highLightedString options:NSCaseInsensitiveSearch];
     if (range.location != NSNotFound) {
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.hit.name];
         

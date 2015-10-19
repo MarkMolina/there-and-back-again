@@ -1,5 +1,5 @@
 //
-//  CCSearchStyle.h
+//  CCRecentSearchHeader.h
 //  Algolia
 //
 //  Created by Mark Molina on 19/10/15.
@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CCSearchStyle : NSObject
-
-+ (UIColor *)highLightBlue;
-+ (UIColor *)recentSearchGrey;
+@interface CCRecentSearchHeader : UIView
 
 @end

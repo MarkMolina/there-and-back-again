@@ -8,6 +8,7 @@
 
 #import "CCSearchDataStore.h"
 #import "CCSearchResponse.h"
+#import "CCCategory.h"
 
 #import <AlgoliaSearch-Client/ASAPIClient.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -62,6 +63,32 @@
               NSError *error = [NSError errorWithDomain:@"some-domain" code:600 userInfo:@{NSLocalizedDescriptionKey : errorMessage}];
               failure(error);
           }];
+}
+
+- (NSArray *)retrieveCategories {
+    
+    /*
+     * Note: Couldn't find a way to fetch all distinct categories in the dataset so doing this statically.
+     *  Normally I would expect an endpoint where I could fetch all categories / subcategories and create
+     *  a correct navigation tree in the client
+     */
+     
+    
+    NSMutableArray *mutableArray = [NSMutableArray new];
+    [mutableArray addObject:[[CCCategory alloc] initWithName:@"Appliances"]];
+    [mutableArray addObject:[[CCCategory alloc] initWithName:@"Cameras & Camcorders"]];
+    [mutableArray addObject:[[CCCategory alloc] initWithName:@"Computers & Tablets"]];
+    [mutableArray addObject:[[CCCategory alloc] initWithName:@"Health, Fitness & Beauty"]];
+    [mutableArray addObject:[[CCCategory alloc] initWithName:@"Laptops"]];
+    [mutableArray addObject:[[CCCategory alloc] initWithName:@"Car Audio"]];
+    [mutableArray addObject:[[CCCategory alloc] initWithName:@"Cell Phones"]];
+    [mutableArray addObject:[[CCCategory alloc] initWithName:@"Microwaves"]];
+    [mutableArray addObject:[[CCCategory alloc] initWithName:@"Point & Shoot Cameras"]];
+    [mutableArray addObject:[[CCCategory alloc] initWithName:@"Tablets"]];
+    [mutableArray addObject:[[CCCategory alloc] initWithName:@"TV & Home Theater"]];
+    
+    return mutableArray.copy;
+
 }
 
 - (RACSubject *)requestStarted {

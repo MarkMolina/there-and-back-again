@@ -22,5 +22,6 @@
 @property (nonatomic, strong) NSURL *directUrl;
 @property (nonatomic, assign) BOOL freeShipping;
 @property (nonatomic, strong) NSNumber *popularity;
+@property (nonatomic, strong) NSString *highLightedString;
 
 @end

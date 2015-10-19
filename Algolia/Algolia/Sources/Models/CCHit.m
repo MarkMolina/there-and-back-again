@@ -27,6 +27,7 @@
         _directUrl = jsonDict[@"url"];
         _freeShipping = jsonDict[@"free_shipping"];
         _popularity = jsonDict[@"popularity"];
+        _highLightedString = [self highLightedFromHTMLString:jsonDict[@"_highlightResult"][@"name"][@"value"]];
     }
     
     return self;
@@ -41,6 +42,29 @@
     
     return mutableArray.copy;
     
+}
+
+- (NSString *)highLightedFromHTMLString:(NSString *)htmlString {
+    
+    NSString *highLightedString;
+
+    NSRange range = [htmlString rangeOfString:@"<em>" options:NSCaseInsensitiveSearch];
+    if (range.location != NSNotFound) {
+        NSRange endRange;
+        
+        endRange.location = range.length + range.location;
+        endRange.length   = [htmlString length] - endRange.location;
+        endRange = [htmlString rangeOfString:@"</em>" options:NSCaseInsensitiveSearch range:endRange];
+        
+        if (endRange.location != NSNotFound) {
+            range.location += range.length;
+            range.length = endRange.location - range.location;
+            
+            highLightedString = [htmlString substringWithRange:range];
+        }
+    }
+    
+    return highLightedString;
 }
 
 @end

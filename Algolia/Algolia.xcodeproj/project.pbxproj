@@ -15,6 +15,8 @@
 		4D181F571BD4444C005FF700 /* CCSearchSuggestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D181F551BD4444C005FF700 /* CCSearchSuggestionCell.m */; settings = {ASSET_TAGS = (); }; };
 		4D181F581BD4444C005FF700 /* CCSearchSuggestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D181F561BD4444C005FF700 /* CCSearchSuggestionCell.xib */; settings = {ASSET_TAGS = (); }; };
 		4D181F5B1BD45329005FF700 /* CCSearchStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D181F5A1BD45329005FF700 /* CCSearchStyle.m */; settings = {ASSET_TAGS = (); }; };
+		4D181F611BD45B03005FF700 /* CCRecentSearchHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D181F601BD45B03005FF700 /* CCRecentSearchHeader.m */; settings = {ASSET_TAGS = (); }; };
+		4D181F631BD45B1C005FF700 /* CCRecentSearchHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D181F621BD45B1C005FF700 /* CCRecentSearchHeader.xib */; settings = {ASSET_TAGS = (); }; };
 		4D2CBB081BD3E0D30027FB31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2CBB071BD3E0D30027FB31 /* main.m */; };
 		4D2CBB131BD3E0D30027FB31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */; };
 		4D2CBB161BD3E0D30027FB31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2CBB141BD3E0D30027FB31 /* LaunchScreen.storyboard */; };
@@ -62,6 +64,9 @@
 		4D181F561BD4444C005FF700 /* CCSearchSuggestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCSearchSuggestionCell.xib; sourceTree = "<group>"; };
 		4D181F591BD45329005FF700 /* CCSearchStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSearchStyle.h; sourceTree = "<group>"; };
 		4D181F5A1BD45329005FF700 /* CCSearchStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSearchStyle.m; sourceTree = "<group>"; };
+		4D181F5F1BD45B03005FF700 /* CCRecentSearchHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRecentSearchHeader.h; sourceTree = "<group>"; };
+		4D181F601BD45B03005FF700 /* CCRecentSearchHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCRecentSearchHeader.m; sourceTree = "<group>"; };
+		4D181F621BD45B1C005FF700 /* CCRecentSearchHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCRecentSearchHeader.xib; sourceTree = "<group>"; };
 		4D2CBB031BD3E0D30027FB31 /* Algolia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algolia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2CBB071BD3E0D30027FB31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4D2CBB121BD3E0D30027FB31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -166,6 +171,9 @@
 		4D181F531BD44439005FF700 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				4D181F5F1BD45B03005FF700 /* CCRecentSearchHeader.h */,
+				4D181F601BD45B03005FF700 /* CCRecentSearchHeader.m */,
+				4D181F621BD45B1C005FF700 /* CCRecentSearchHeader.xib */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -446,6 +454,7 @@
 				4D181F581BD4444C005FF700 /* CCSearchSuggestionCell.xib in Resources */,
 				4D2CBB161BD3E0D30027FB31 /* LaunchScreen.storyboard in Resources */,
 				4D2CBB131BD3E0D30027FB31 /* Assets.xcassets in Resources */,
+				4D181F631BD45B1C005FF700 /* CCRecentSearchHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +534,7 @@
 				4D181F421BD435C9005FF700 /* CCSearchResponse.m in Sources */,
 				4D2CBB3B1BD3E18A0027FB31 /* AppDelegate.m in Sources */,
 				4D2CBB081BD3E0D30027FB31 /* main.m in Sources */,
+				4D181F611BD45B03005FF700 /* CCRecentSearchHeader.m in Sources */,
 				4D181F481BD43969005FF700 /* CCCategory.m in Sources */,
 				4D2CBB4B1BD3E3160027FB31 /* CCBaseModel.m in Sources */,
 				4D2CBB481BD3E2F60027FB31 /* CCViewController.m in Sources */,

@@ -254,6 +254,10 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    
+    if ([self.delegate respondsToSelector:@selector(searchBarCancelButtonClicked)]) {
+        [self.delegate searchBarCancelButtonClicked];
+    }
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {

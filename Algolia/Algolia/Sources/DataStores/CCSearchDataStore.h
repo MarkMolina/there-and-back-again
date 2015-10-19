@@ -25,5 +25,6 @@ typedef void (^CCSearchDataStoreFailure)(NSError *error);
 
 - (void)queryWithFullTextQuery:(NSString *)queryString;
 - (void)queryWithFullTextQuery:(NSString *)queryString success:(CCSearchDataStoreSuccess)success failure:(CCSearchDataStoreFailure)failure;
+- (NSArray *)retrieveCategories;
 
 @end

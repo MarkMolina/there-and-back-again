@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"Home";
     self.view.backgroundColor = [UIColor greenColor];
     [self testSearch];
 }

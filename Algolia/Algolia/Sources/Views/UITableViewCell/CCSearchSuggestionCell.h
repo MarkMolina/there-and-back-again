@@ -12,7 +12,7 @@
 
 @interface CCSearchSuggestionCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (nonatomic, strong) CCHit *hit;
-@property (nonatomic, strong) NSString *highLightString;
 
 @end

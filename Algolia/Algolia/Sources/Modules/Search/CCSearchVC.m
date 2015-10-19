@@ -14,9 +14,15 @@
 #import "CCCategory.h"
 
 #import "CCSearchSuggestionCell.h"
+#import "CCRecentSearchHeader.h"
 
 #import <Masonry/Masonry.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+
+typedef NS_ENUM(NSInteger, CCDataSourceType) {
+    CCDataSourceCategory = 0,
+    CCDataSourceSearch
+};
 
 @interface CCSearchVC () <CCSearchBarPluginDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -24,6 +30,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CCSearchResponse *searchResponse;
 @property (nonatomic, strong) NSArray *recentSearches;
+@property (nonatomic, assign) CCDataSourceType dataSourceType;
 
 @end
 
@@ -75,7 +82,9 @@
 
 - (void)showSearch:(id)sender {
     
+    self.dataSourceType = CCDataSourceSearch;
     [self.searchBarPlugin showSearchBar];
+    [self.tableView reloadData];
 }
 
 - (void)createTableView {
@@ -137,35 +146,82 @@
     
 }
 
+- (void)searchBarCancelButtonClicked {
+    
+    self.dataSourceType = CCDataSourceCategory;
+    [self.tableView reloadData];
+}
+
 - (void)searchBarSearchButtonClicked {
     
     [self saveRecentSearches];
 }
 
+- (BOOL)shouldShowRecentSearches {
+    
+    if (!self.searchResponse.hits.count && self.dataSourceType == CCDataSourceSearch) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 #pragma mark - UITableViewDataSource
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    if (![self shouldShowRecentSearches]) {
+        return nil;
+    }
+    
+    CCRecentSearchHeader *header = [CCRecentSearchHeader new];
+    
+    return header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    if ([self shouldShowRecentSearches]) {
+        return 77.f;
+    }
+    
+    return 0.f;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.searchResponse.hits.count ? self.searchResponse.hits.count :self.recentSearches.count;
+    if (self.dataSourceType == CCDataSourceCategory) {
+        return [[CCSearchDataStore sharedInstance] retrieveCategories].count;
+    }
+    
+    return [self shouldShowRecentSearches] ? self.recentSearches.count : self.searchResponse.hits.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (self.searchResponse.hits.count) {
-        CCSearchSuggestionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CCSearchSuggestionCell" forIndexPath:indexPath];
-        
-        CCHit *hit = self.searchResponse.hits[indexPath.row];
-        cell.hit = hit;
-        cell.highLightString = self.searchResponse.query;
-        
-        return cell;
-    } else {
+    if (self.dataSourceType == CCDataSourceCategory) {
         UITableViewCell *tableviewCell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         if (!tableviewCell) {
             tableviewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         }
         
-        tableviewCell.textLabel.text = self.recentSearches[indexPath.row];
+        CCCategory *category = [[CCSearchDataStore sharedInstance] retrieveCategories][indexPath.row];
+        tableviewCell.textLabel.text = category.name;
+        
+        return tableviewCell;
+    }
+    
+    if (![self shouldShowRecentSearches]) {
+        CCSearchSuggestionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CCSearchSuggestionCell" forIndexPath:indexPath];
+        
+        CCHit *hit = self.searchResponse.hits[indexPath.row];
+        cell.hit = hit;
+        
+        return cell;
+    } else {
+        CCSearchSuggestionCell *tableviewCell = [tableView dequeueReusableCellWithIdentifier:@"CCSearchSuggestionCell"];
+        
+        tableviewCell.nameLabel.text = self.recentSearches[indexPath.row];
         
         return tableviewCell;
     }
@@ -175,6 +231,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (self.dataSourceType == CCDataSourceCategory) {
+        NSLog(@"Search object in this catgeory");
+        return;
+    }
+    
+    if (![self shouldShowRecentSearches]) {
+        NSLog(@"Show details of this object");
+        return;
+    } else {
+        NSLog(@"Search with this latest search term");
+        return;
+    }
     
 }
 
