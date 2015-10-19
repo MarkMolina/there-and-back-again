@@ -27,5 +27,6 @@
 - (instancetype)initWithRootController:(UIViewController *)controller;
 
 - (void)showSearchBar;
+- (void)hideSearchBar;
 
 @end

@@ -147,15 +147,29 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 
 
 - (void)showSearchBar {
+    
+    [self.searchBar setHidden:NO];
     [self.searchBar.superview bringSubviewToFront:self.searchBar];
     [self.searchBar becomeFirstResponder];
 }
 
+- (void)hideSearchBar {
+    
+    [self.searchBar setHidden:YES];
+    [self.rootController.view endEditing:YES];
+}
 
 - (UISearchBar *)searchBar {
+    
     if (nil == _searchBar) {
         CGRect bounds = self.rootController.navigationController.navigationBar.bounds;
-        int leftMargin = 5;
+        int leftMargin;
+        if (self.rootController.navigationController.viewControllers.count > 1) {
+            leftMargin = 25;
+        } else {
+            leftMargin = 5;
+        }
+        
         bounds.origin.x += leftMargin;
         bounds.size.width -= leftMargin;
         UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:bounds];

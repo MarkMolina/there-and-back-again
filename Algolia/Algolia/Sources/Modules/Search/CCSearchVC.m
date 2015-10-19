@@ -7,6 +7,7 @@
 //
 
 #import "CCSearchVC.h"
+#import "CCSearchRestultsVC.h"
 #import "CCSearchBarPlugin.h"
 #import "CCSearchDataStore.h"
 #import "CCSearchResponse.h"
@@ -14,6 +15,7 @@
 #import "CCCategory.h"
 
 #import "CCSearchSuggestionCell.h"
+#import "CCCategoryCell.h"
 #import "CCRecentSearchHeader.h"
 
 #import <Masonry/Masonry.h>
@@ -50,6 +52,14 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    // Make the seachbar the first responder
+    [self showSearch:nil];
+}
+
 #pragma mark - Private
 
 - (void)createViews {
@@ -57,9 +67,6 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     [self createSearchButton];
     [self createSearchBar];
     [self createTableView];
-    
-    // Make the seachbar the first responder on load
-    [self showSearch:nil];
 }
 
 - (void)createSearchButton {
@@ -100,6 +107,9 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     
     UINib *searchSuggestionCellNib = [UINib nibWithNibName:@"CCSearchSuggestionCell" bundle:nil];
     [self.tableView registerNib:searchSuggestionCellNib forCellReuseIdentifier:@"CCSearchSuggestionCell"];
+    
+    UINib *categoryCellNib = [UINib nibWithNibName:@"CCCategoryCell" bundle:nil];
+    [self.tableView registerNib:categoryCellNib forCellReuseIdentifier:@"CCCategoryCell"];
 }
 
 - (void)saveRecentSearches {
@@ -155,6 +165,8 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
 - (void)searchBarSearchButtonClicked {
     
     [self saveRecentSearches];
+    
+    [self pushSearchResultsVC];
 }
 
 - (BOOL)shouldShowRecentSearches {
@@ -164,6 +176,12 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     }
     
     return NO;
+}
+
+- (void)pushSearchResultsVC {
+    
+    CCSearchRestultsVC *vc = [[CCSearchRestultsVC alloc] initWithSearchQuery:self.searchResponse.query];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -200,15 +218,13 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (self.dataSourceType == CCDataSourceCategory) {
-        UITableViewCell *tableviewCell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-        if (!tableviewCell) {
-            tableviewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        }
+        CCCategoryCell *categoryCell = [tableView dequeueReusableCellWithIdentifier:@"CCCategoryCell" forIndexPath:indexPath];
         
         CCCategory *category = [[CCSearchDataStore sharedInstance] retrieveCategories][indexPath.row];
-        tableviewCell.textLabel.text = category.name;
+        categoryCell.nameLabel.text = category.name;
+        categoryCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
-        return tableviewCell;
+        return categoryCell;
     }
     
     if (![self shouldShowRecentSearches]) {
@@ -240,7 +256,9 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
         NSLog(@"Show details of this object");
         return;
     } else {
-        NSLog(@"Search with this latest search term");
+        [self.searchBarPlugin hideSearchBar];
+        
+        [self pushSearchResultsVC];
         return;
     }
     
