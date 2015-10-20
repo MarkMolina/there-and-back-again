@@ -37,4 +37,4 @@ If a user selected a category instead of searching, the application shows all se
 
 My Account ViewController
 =========================
-Out of scope for this assignment and not implemened. How a possibility how this "webapp" could look like.
+Out of scope for this assignment and not implemened. How a possibility how this "Shop app" could look like.
