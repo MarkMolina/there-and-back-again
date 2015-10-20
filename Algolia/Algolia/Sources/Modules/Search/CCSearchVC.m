@@ -232,6 +232,10 @@ static CGFloat const kHeiderHeigth = 77.f;
     if (self.dataSourceType == CCDataSourceCategory) {
         CCCategoryCell *categoryCell = [tableView dequeueReusableCellWithIdentifier:kCategoryCell forIndexPath:indexPath];
         
+        if (indexPath.row >= [[CCSearchDataStore sharedInstance] retrieveCategories].count) {
+            return categoryCell;
+        }
+        
         CCCategory *category = [[CCSearchDataStore sharedInstance] retrieveCategories][indexPath.row];
         categoryCell.nameLabel.text = category.name;
         categoryCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
