@@ -62,9 +62,11 @@
     
     for (CCCategory *category in self.categoriesDataSource) {
         
+        CCCategoryCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:[self.categoriesDataSource indexOfObject:category] inSection:1]];
         if ([self.categories containsObject:category.name]) {
-            CCCategoryCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:[self.categoriesDataSource indexOfObject:category] inSection:1]];
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
 }
