@@ -16,6 +16,7 @@
 @interface CCFilterVC () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *categoriesDataSource;
 
 @end
 
@@ -24,8 +25,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.categoriesDataSource =  [[CCSearchDataStore sharedInstance] retrieveCategories];
+    
     [self createViews];
 }
+
+#pragma mark - Setters
+
+- (void)setCategories:(NSArray *)categories {
+    
+    _categories = categories;
+    [self setSelectedCategories];
+}
+
+#pragma mark - Private
 
 - (void)createViews {
     
@@ -43,6 +56,17 @@
     
     UINib *categoryCellNib = [UINib nibWithNibName:@"CCCategoryCell" bundle:nil];
     [self.tableView registerNib:categoryCellNib forCellReuseIdentifier:@"CCCategoryCell"];
+}
+
+- (void)setSelectedCategories {
+    
+    for (CCCategory *category in self.categoriesDataSource) {
+        
+        if ([self.categories containsObject:category.name]) {
+            CCCategoryCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:[self.categoriesDataSource indexOfObject:category] inSection:1]];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+    }
 }
 
 - (UITableViewCell *)cellForPriceRangeFromTableView:(UITableView *)tableView {
@@ -103,6 +127,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        if (cell.accessoryType == UITableViewCellAccessoryNone) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+    
+    CCCategory *category = self.categoriesDataSource[indexPath.row];
+    
+    if ([self.delegate respondsToSelector:@selector(filterVCDidSelectCategoryName:)]) {
+        [self.delegate filterVCDidSelectCategoryName:category.name];
+    }
 }
 
 @end

@@ -71,7 +71,7 @@
         query.page = page;
     }
     
-    if (facets) {
+    if (facets.count) {
         query.facetFilters = facets;
     }
     

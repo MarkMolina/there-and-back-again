@@ -7,6 +7,7 @@
 //
 
 #import "CCSearchRestultsVC.h"
+#import "CCFilterVC.h"
 #import "CCSearchBarPlugin.h"
 #import "CCSearchDataStore.h"
 #import "CCSearchResponse.h"
@@ -18,7 +19,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <RESideMenu/RESideMenu.h>
 
-@interface CCSearchRestultsVC () <CCSearchBarPluginDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface CCSearchRestultsVC () <CCSearchBarPluginDelegate, CCFilterVCDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSString *query;
 @property (nonatomic, strong) NSArray *categories;
@@ -53,7 +54,10 @@
     self.title = @"Search results";
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.sideMenu = (RESideMenu *)[[UIApplication sharedApplication] keyWindow].rootViewController;
+    
     [self createViews];
+    [self setFilterCategories];
     [self retrieveSearchResults];
 }
 
@@ -66,11 +70,22 @@
     [self createTableView];
 }
 
+- (void)setFilterCategories {
+    
+    CCFilterVC *vc = (CCFilterVC *)self.sideMenu.rightMenuViewController;
+    vc.delegate = self;
+    vc.categories = self.categories;
+}
+
 - (void)createBarButtonItems {
     
-    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FilterIcon"] style:UIBarButtonItemStyleDone target:self action:@selector(showFilter:)],[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
-                                                                                                                                                                           target:self
-                                                                                                                                                                           action:@selector(showSearch:)]];
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FilterIcon"]
+                                                                                 style:UIBarButtonItemStyleDone
+                                                                                target:self
+                                                                                action:@selector(showFilter:)],
+                                                [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+                                                                                              target:self
+                                                                                              action:@selector(showSearch:)]];
 }
 
 - (void)createSearchBar {
@@ -92,7 +107,6 @@
 
 - (void)showFilter:(id)sender {
     
-    self.sideMenu = (RESideMenu *)[[UIApplication sharedApplication] keyWindow].rootViewController;
     [self.sideMenu presentRightMenuViewController];
 }
 
@@ -172,10 +186,11 @@
     
 }
 
-#pragma mark - CCSearchBarPlugin
+#pragma mark - CCSearchBarPluginDelegate
 
 - (void)searchBarTextDidChange:(NSString *)searchText {
     
+    self.query = searchText;
     [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:searchText facets:[self.categories facetsArrayWithKey:@"categories"] success:^(CCSearchResponse *searchResponse) {
         
         self.searchResponse = searchResponse;
@@ -196,9 +211,24 @@
 - (void)searchBarSearchButtonClicked {
     
     [self saveRecentSearchesFromSearchResponse:self.searchResponse];
-    [self.tableView reloadData];
+    self.query = self.searchResponse.query;
+    [self retrieveSearchResults];
+}
+
+#pragma mark - CCFilterVCDelegate
+
+- (void)filterVCDidSelectCategoryName:(NSString *)categoryName {
     
-    //[self pushSearchResultsVCWithQuery:self.searchResponse.query facets:nil];
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self.categories];
+    
+    if ([mutableArray containsObject:categoryName]) {
+        [mutableArray removeObject:categoryName];
+    } else {
+        [mutableArray addObject:categoryName];
+    }
+    
+    self.categories = mutableArray.copy;
+    [self retrieveSearchResults];
 }
 
 @end
