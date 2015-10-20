@@ -35,6 +35,7 @@
 		4D5EEFCA1BD5683600B8BE43 /* CCSearchRestultsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EEFC91BD5683600B8BE43 /* CCSearchRestultsVC.m */; settings = {ASSET_TAGS = (); }; };
 		4D5EEFCE1BD5709B00B8BE43 /* CCResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EEFCC1BD5709B00B8BE43 /* CCResultsCell.m */; settings = {ASSET_TAGS = (); }; };
 		4D5EEFCF1BD5709B00B8BE43 /* CCResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D5EEFCD1BD5709B00B8BE43 /* CCResultsCell.xib */; settings = {ASSET_TAGS = (); }; };
+		4DAB687F1BD6776B00657683 /* NSArray+Facets.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB687E1BD6776B00657683 /* NSArray+Facets.m */; settings = {ASSET_TAGS = (); }; };
 		CDF9FEAAC15EE0C094BBEDAA /* libPods-Algolia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2F2FEF1FCB494F1FE8B93B /* libPods-Algolia.a */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,8 @@
 		4D5EEFCB1BD5709B00B8BE43 /* CCResultsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCResultsCell.h; sourceTree = "<group>"; };
 		4D5EEFCC1BD5709B00B8BE43 /* CCResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCResultsCell.m; sourceTree = "<group>"; };
 		4D5EEFCD1BD5709B00B8BE43 /* CCResultsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCResultsCell.xib; sourceTree = "<group>"; };
+		4DAB687D1BD6776B00657683 /* NSArray+Facets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Facets.h"; sourceTree = "<group>"; };
+		4DAB687E1BD6776B00657683 /* NSArray+Facets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Facets.m"; sourceTree = "<group>"; };
 		794B66D049743057C9CDA56E /* Pods-Algolia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Algolia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Algolia/Pods-Algolia.debug.xcconfig"; sourceTree = "<group>"; };
 		BB2F2FEF1FCB494F1FE8B93B /* libPods-Algolia.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Algolia.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7515E69DD6DBE99D8F9DE1D /* Pods-Algolia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Algolia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Algolia/Pods-Algolia.release.xcconfig"; sourceTree = "<group>"; };
@@ -361,6 +364,7 @@
 		4D2CBB451BD3E2CC0027FB31 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				4DAB687B1BD6774400657683 /* Helpers */,
 				4D2CBB3C1BD3E19E0027FB31 /* Application */,
 				4D181F381BD3FA21005FF700 /* DataStores */,
 				4D2CBB3D1BD3E1B70027FB31 /* Models */,
@@ -388,6 +392,24 @@
 				4D5EEFC91BD5683600B8BE43 /* CCSearchRestultsVC.m */,
 			);
 			path = SearchResults;
+			sourceTree = "<group>";
+		};
+		4DAB687B1BD6774400657683 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4DAB687C1BD6774400657683 /* Categories */,
+			);
+			name = Helpers;
+			path = Sources/Helpers;
+			sourceTree = "<group>";
+		};
+		4DAB687C1BD6774400657683 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4DAB687D1BD6776B00657683 /* NSArray+Facets.h */,
+				4DAB687E1BD6776B00657683 /* NSArray+Facets.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -575,6 +597,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DAB687F1BD6776B00657683 /* NSArray+Facets.m in Sources */,
 				4D181F451BD438FB005FF700 /* CCHit.m in Sources */,
 				4D5EEFBC1BD553FE00B8BE43 /* CCHomeVC.m in Sources */,
 				4D181F3B1BD3FA3A005FF700 /* CCSearchDataStore.m in Sources */,

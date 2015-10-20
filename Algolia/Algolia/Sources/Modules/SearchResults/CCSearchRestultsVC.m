@@ -7,11 +7,12 @@
 //
 
 #import "CCSearchRestultsVC.h"
-#import "CCFilterVC.h"
 #import "CCSearchBarPlugin.h"
 #import "CCSearchDataStore.h"
 #import "CCSearchResponse.h"
 #import "CCResultsCell.h"
+
+#import "NSArray+Facets.h"
 
 #import <Masonry/Masonry.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -20,7 +21,7 @@
 @interface CCSearchRestultsVC () <CCSearchBarPluginDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSString *query;
-@property (nonatomic, strong) NSArray *facets;
+@property (nonatomic, strong) NSArray *categories;
 @property (nonatomic, strong) CCSearchBarPlugin *searchBarPlugin;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CCSearchResponse *searchResponse;
@@ -31,17 +32,17 @@
 
 @implementation CCSearchRestultsVC
 
-+ (instancetype)viewControllerWithSearchQuery:(NSString *)query facets:(NSArray *)facets {
++ (instancetype)viewControllerWithSearchQuery:(NSString *)query categories:(NSArray *)categories {
     
-    return [[self alloc] initWithSearchQuery:query facets:facets];
+    return [[self alloc] initWithSearchQuery:query categories:categories];
 }
 
-- (instancetype)initWithSearchQuery:(NSString *)query facets:(NSArray *)facets {
+- (instancetype)initWithSearchQuery:(NSString *)query categories:(NSArray *)categories {
     
     self = [super init];
     if (self) {
         _query = query;
-        _facets = facets;
+        _categories = categories;
     }
     
     return self;
@@ -60,17 +61,9 @@
 
 - (void)createViews {
     
-    [self createFilterVC];
     [self createBarButtonItems];
     [self createSearchBar];
     [self createTableView];
-}
-
-- (void)createFilterVC {
-    
-    CCFilterVC *filterVC = [CCFilterVC new];
-    self.sideMenu = (RESideMenu *)[[UIApplication sharedApplication] keyWindow].rootViewController;
-    self.sideMenu.rightMenuViewController = filterVC;
 }
 
 - (void)createBarButtonItems {
@@ -99,6 +92,7 @@
 
 - (void)showFilter:(id)sender {
     
+    self.sideMenu = (RESideMenu *)[[UIApplication sharedApplication] keyWindow].rootViewController;
     [self.sideMenu presentRightMenuViewController];
 }
 
@@ -120,7 +114,7 @@
 - (void)retrieveSearchResults {
     
     self.currentPage = 0;
-    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query facets:self.facets success:^(CCSearchResponse *searchResponse) {
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query facets:[self.categories facetsArrayWithKey:@"categories"] success:^(CCSearchResponse *searchResponse) {
         
         self.searchResponse = searchResponse;
         [self.tableView reloadData];
@@ -133,7 +127,7 @@
 - (void)retrieveNextSearchResults {
     
     self.currentPage++;
-    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query page:self.currentPage facets:self.facets success:^(CCSearchResponse *searchResponse) {
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query page:self.currentPage facets:[self.categories facetsArrayWithKey:@"categories"] success:^(CCSearchResponse *searchResponse) {
         
         NSArray *array = [self.searchResponse.hits arrayByAddingObjectsFromArray:searchResponse.hits];
         self.searchResponse.hits = array;
@@ -182,7 +176,7 @@
 
 - (void)searchBarTextDidChange:(NSString *)searchText {
     
-    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:searchText facets:self.facets success:^(CCSearchResponse *searchResponse) {
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:searchText facets:[self.categories facetsArrayWithKey:@"categories"] success:^(CCSearchResponse *searchResponse) {
         
         self.searchResponse = searchResponse;
         [self.tableView reloadData];

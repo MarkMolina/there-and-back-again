@@ -10,7 +10,7 @@
 
 @interface CCSearchRestultsVC : CCViewController
 
-+ (instancetype)viewControllerWithSearchQuery:(NSString *)query facets:(NSArray *)facets;
-- (instancetype)initWithSearchQuery:(NSString *)query facets:(NSArray *)facets;
++ (instancetype)viewControllerWithSearchQuery:(NSString *)query categories:(NSArray *)categories;
+- (instancetype)initWithSearchQuery:(NSString *)query categories:(NSArray *)categories;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CCFilterVC.h"
 #import "CCHomeVC.h"
 #import "CCSearchVC.h"
 #import "CCMenuVC.h"
@@ -57,9 +58,11 @@
     accountTabbarItem.title = @"My Account";
     [accountTabbarItem setImage:[UIImage imageNamed:@"AccountTab"]];
     
-    RESideMenu *sideMenu = [[RESideMenu alloc] initWithContentViewController:tabbarController leftMenuViewController:nil rightMenuViewController:nil];
-    sideMenu.backgroundImage = [UIImage imageNamed:@"SolidBG"];
+    CCFilterVC *filterVC = [CCFilterVC new];
+    
+    RESideMenu *sideMenu = [[RESideMenu alloc] initWithContentViewController:tabbarController leftMenuViewController:nil rightMenuViewController:filterVC];
     sideMenu.panGestureEnabled = NO;
+    sideMenu.backgroundImage = [UIImage imageNamed:@"SolidBG"];
     
     self.window.rootViewController = sideMenu;
     [self.window makeKeyAndVisible];

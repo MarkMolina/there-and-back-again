@@ -145,7 +145,7 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     self.recentSearches = [[NSUserDefaults standardUserDefaults] objectForKey:@"recent_searches"];
     [self.tableView reloadData];
     
-    [self pushSearchResultsVCWithQuery:self.searchResponse.query facets:nil];
+    [self pushSearchResultsVCWithQuery:self.searchResponse.query categories:nil];
 }
 
 - (BOOL)shouldShowRecentSearches {
@@ -157,9 +157,9 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     return NO;
 }
 
-- (void)pushSearchResultsVCWithQuery:(NSString *)query facets:(NSArray *)facets {
+- (void)pushSearchResultsVCWithQuery:(NSString *)query categories:(NSArray *)categories {
     
-    CCSearchRestultsVC *searchVC = [[CCSearchRestultsVC alloc] initWithSearchQuery:query facets:facets];
+    CCSearchRestultsVC *searchVC = [[CCSearchRestultsVC alloc] initWithSearchQuery:query categories:categories];
     [self.navigationController pushViewController:searchVC animated:YES];
 }
 
@@ -228,7 +228,7 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     
     if (self.dataSourceType == CCDataSourceCategory) {
         CCCategory *category = [[CCSearchDataStore sharedInstance] retrieveCategories][indexPath.row];
-        [self pushSearchResultsVCWithQuery:@"" facets:@[[NSString stringWithFormat:@"%@:%@", @"categories", category.name]]];
+        [self pushSearchResultsVCWithQuery:@"" categories:@[category.name]];
         return;
     }
     
@@ -237,7 +237,7 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
         return;
     } else {
         [self.searchBarPlugin hideSearchBar];
-        [self pushSearchResultsVCWithQuery:self.recentSearches[indexPath.row] facets:nil];
+        [self pushSearchResultsVCWithQuery:self.recentSearches[indexPath.row] categories:nil];
         return;
     }
     
