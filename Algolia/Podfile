@@ -8,6 +8,9 @@ target 'Algolia' do
 pod 'Masonry'
 pod 'AFNetworking'
 pod 'AlgoliaSearch-Client', '~> 3.5'
+pod 'ReactiveCocoa', '~> 2.5'
+pod 'Reveal-iOS-SDK', :configurations => ['Debug']
+pod 'RESideMenu', '~> 4.0.7'
 
 end
 

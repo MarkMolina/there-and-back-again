@@ -10,4 +10,7 @@
 
 @interface CCBaseModel : NSObject
 
++ (instancetype)modelFromJSONDictionary:(NSDictionary*)jsonDict;
+- (instancetype)initWithJSONDictionary:(NSDictionary*)jsonDict;
+
 @end

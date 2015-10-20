@@ -7,11 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "CCFilterVC.h"
 #import "CCHomeVC.h"
 #import "CCSearchVC.h"
 #import "CCMenuVC.h"
 
 #import "CCSearchDataStore.h"
+
+#import <RESideMenu/RESideMenu.h>
 
 @interface AppDelegate ()
 @end
@@ -27,14 +30,41 @@
     self.window.frame = UIScreen.mainScreen.bounds;
     self.window.backgroundColor = UIColor.whiteColor;
     
-    CCHomeVC *homeVC = [CCHomeVC new];
+    // Home View Controller
+    UIStoryboard *homeStoryBoard = [UIStoryboard storyboardWithName:@"HomeStoryBoard" bundle:nil];
+    CCHomeVC *homeVC = [homeStoryBoard instantiateViewControllerWithIdentifier:@"HomeStoryBoard"];
+    
+    // Search View Controller
     CCSearchVC *searchVC = [CCSearchVC new];
+    UINavigationController *searchNavigationController = [[UINavigationController alloc] initWithRootViewController:searchVC];
+    searchNavigationController.navigationBar.translucent = NO;
+    
+    // Menu View Controller
     CCMenuVC *menuVC = [CCMenuVC new];
     
     UITabBarController *tabbarController = [UITabBarController new];
-    tabbarController.viewControllers = @[homeVC, searchVC, menuVC];
+    tabbarController.tabBar.translucent = NO;
+    tabbarController.viewControllers = @[homeVC, searchNavigationController, menuVC];
     
-    self.window.rootViewController = tabbarController;
+    UITabBarItem *homeTabbarItem = [tabbarController.tabBar.items objectAtIndex:0];
+    homeTabbarItem.title = @"Home";
+    [homeTabbarItem setImage:[UIImage imageNamed:@"HomeTab"]];
+
+    UITabBarItem *searchTabbarItem = [tabbarController.tabBar.items objectAtIndex:1];
+    searchTabbarItem.title = @"Search";
+    [searchTabbarItem setImage:[UIImage imageNamed:@"SearchTab"]];
+    
+    UITabBarItem *accountTabbarItem = [tabbarController.tabBar.items objectAtIndex:2];
+    accountTabbarItem.title = @"My Account";
+    [accountTabbarItem setImage:[UIImage imageNamed:@"AccountTab"]];
+    
+    CCFilterVC *filterVC = [CCFilterVC new];
+    
+    RESideMenu *sideMenu = [[RESideMenu alloc] initWithContentViewController:tabbarController leftMenuViewController:nil rightMenuViewController:filterVC];
+    sideMenu.panGestureEnabled = NO;
+    sideMenu.backgroundImage = [UIImage imageNamed:@"SolidBG"];
+    
+    self.window.rootViewController = sideMenu;
     [self.window makeKeyAndVisible];
     
     return YES;

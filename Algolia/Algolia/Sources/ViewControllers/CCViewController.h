@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class CCSearchResponse;
+
 @interface CCViewController : UIViewController
 
+- (void)saveRecentSearchesFromSearchResponse:(CCSearchResponse *)searchResponse;
+    
 @end
