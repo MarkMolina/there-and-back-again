@@ -48,7 +48,7 @@ static CGFloat const kHeiderHeigth = 77.f;
     
     self = [super init];
     if (self) {
-        _showSearchBar = YES;
+        _shouldShowSearchBar = YES;
     }
     
     return self;
@@ -73,7 +73,7 @@ static CGFloat const kHeiderHeigth = 77.f;
     }
     
     // Make the seachbar the first responder
-    if (self.showSearchBar) {
+    if (self.shouldShowSearchBar) {
         [self showSearch:nil];
     }
 }
@@ -82,13 +82,14 @@ static CGFloat const kHeiderHeigth = 77.f;
     
     [super viewWillDisappear:animated];
     [self.searchBarPlugin hideSearchBar];
+    self.showSearchBar = YES;
 }
 
 #pragma mark - Setters
 
 - (void)setShowSearchBar:(BOOL)showSearchBar {
     
-    _showSearchBar = showSearchBar;
+    _shouldShowSearchBar = showSearchBar;
     _dataSourceType = CCDataSourceCategory;
 }
 

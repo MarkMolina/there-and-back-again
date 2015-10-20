@@ -10,6 +10,6 @@
 
 @interface CCSearchVC : CCViewController
 
-@property (nonatomic, assign) BOOL showSearchBar;
+@property (nonatomic, assign) BOOL shouldShowSearchBar;
 
 @end

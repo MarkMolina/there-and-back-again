@@ -31,7 +31,7 @@
     
     CCSearchVC *vc = navigationController.viewControllers[0];
     
-    vc.showSearchBar = NO;
+    vc.shouldShowSearchBar = NO;
     
     [self.tabBarController setSelectedIndex:1];
 }
