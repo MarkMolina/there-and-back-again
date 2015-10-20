@@ -38,6 +38,16 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
 
 @implementation CCSearchVC
 
+- (instancetype)init {
+    
+    self = [super init];
+    if (self) {
+        _showSearchBar = YES;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Search";
@@ -49,6 +59,7 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
 - (void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
+    [self.tableView reloadData];
     
     self.recentSearches = [[NSUserDefaults standardUserDefaults] objectForKey:@"recent_searches"];
     if (!self.recentSearches) {
@@ -56,7 +67,23 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     }
     
     // Make the seachbar the first responder
-    [self showSearch:nil];
+    if (self.showSearchBar) {
+        [self showSearch:nil];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    [self.searchBarPlugin hideSearchBar];
+}
+
+#pragma mark - Setters
+
+- (void)setShowSearchBar:(BOOL)showSearchBar {
+    
+    _showSearchBar = showSearchBar;
+    _dataSourceType = CCDataSourceCategory;
 }
 
 #pragma mark - Private

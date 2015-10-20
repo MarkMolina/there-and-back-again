@@ -61,6 +61,12 @@
     [self retrieveSearchResults];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    [self.searchBarPlugin hideSearchBar];
+}
+
 #pragma mark - Private
 
 - (void)createViews {

@@ -46,7 +46,7 @@
 
 - (void)setPriceText {
     
-    self.priceLabel.text = [NSString stringWithFormat:@"%@", self.hit.price];
+    self.priceLabel.text = [NSString stringWithFormat:@"%.02f", self.hit.price.floatValue];
 }
 
 - (void)setIconImage {
