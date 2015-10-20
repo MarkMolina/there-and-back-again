@@ -9,6 +9,8 @@
 #import "CCRecentSearchHeader.h"
 #import "CCSearchStyle.h"
 
+static NSString * const kResentSearchHeaderNibName = @"CCRecentSearchHeader";
+
 @interface CCRecentSearchHeader()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @end
@@ -17,7 +19,7 @@
 
 -(id)init {
     
-    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"CCRecentSearchHeader" owner:self options:nil];
+    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:kResentSearchHeaderNibName owner:self options:nil];
     id mainView = [subviewArray objectAtIndex:0];
     return mainView;
 }

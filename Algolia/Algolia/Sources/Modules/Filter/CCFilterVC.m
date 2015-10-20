@@ -13,6 +13,12 @@
 
 #import <Masonry/Masonry.h>
 
+static NSString * const kCCCategoryCell = @"CCCategoryCell";
+static NSString * const kCellReuseIdentifier = @"Cell";
+
+static NSInteger const kLeftMargin = 110;
+static NSInteger const kTopMargin = 15;
+
 @interface CCFilterVC () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -49,13 +55,13 @@
     [self.view addSubview:self.tableView];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(110);
-        make.top.equalTo(self.view).with.offset(15);
+        make.left.equalTo(self.view).with.offset(kLeftMargin);
+        make.top.equalTo(self.view).with.offset(kTopMargin);
         make.bottom.right.equalTo(self.view);
     }];
     
-    UINib *categoryCellNib = [UINib nibWithNibName:@"CCCategoryCell" bundle:nil];
-    [self.tableView registerNib:categoryCellNib forCellReuseIdentifier:@"CCCategoryCell"];
+    UINib *categoryCellNib = [UINib nibWithNibName:kCCCategoryCell bundle:nil];
+    [self.tableView registerNib:categoryCellNib forCellReuseIdentifier:kCCCategoryCell];
 }
 
 - (void)setSelectedCategories {
@@ -73,9 +79,9 @@
 
 - (UITableViewCell *)cellForPriceRangeFromTableView:(UITableView *)tableView {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellReuseIdentifier];
         cell.backgroundColor = [UIColor clearColor];
     }
     
@@ -86,7 +92,7 @@
 
 - (CCCategoryCell *)cellForCategoryFromTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     
-    CCCategoryCell *categoryCell = [tableView dequeueReusableCellWithIdentifier:@"CCCategoryCell" forIndexPath:indexPath];
+    CCCategoryCell *categoryCell = [tableView dequeueReusableCellWithIdentifier:kCCCategoryCell forIndexPath:indexPath];
     categoryCell.backgroundColor = [UIColor clearColor];
     
     CCCategory *category = [[CCSearchDataStore sharedInstance] retrieveCategories][indexPath.row];

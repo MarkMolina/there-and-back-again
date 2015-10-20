@@ -15,6 +15,7 @@
     
     self = [super initWithJSONDictionary:jsonDict];
     if (self) {
+        
         _objectId = jsonDict[@"objectID"];
         _name = jsonDict[@"name"];
         _objectDescription = jsonDict[@"description"];

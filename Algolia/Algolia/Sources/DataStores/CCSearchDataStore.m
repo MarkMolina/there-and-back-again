@@ -13,6 +13,10 @@
 #import <AlgoliaSearch-Client/ASAPIClient.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+static NSString * const kApplicationId = @"8ALNK3U7VV";
+static NSString * const kApiKey = @"4c8d49f24a317cac308e4037179a5539";
+static NSString * const kIndexName = @"best_buy_demo";
+
 @interface CCSearchDataStore()
 
 @property (nonatomic, strong) ASRemoteIndex *index;
@@ -41,8 +45,8 @@
     
     self = [super init];
     if (self) {
-        ASAPIClient *apiClient = [ASAPIClient apiClientWithApplicationID:@"8ALNK3U7VV" apiKey:@"4c8d49f24a317cac308e4037179a5539"];
-        _index = [apiClient getIndex:@"best_buy_demo"];
+        ASAPIClient *apiClient = [ASAPIClient apiClientWithApplicationID:kApplicationId apiKey:kApiKey];
+        _index = [apiClient getIndex:kIndexName];
     }
     
     return self;

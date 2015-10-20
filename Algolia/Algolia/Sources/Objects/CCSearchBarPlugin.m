@@ -30,6 +30,7 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 
 
 @interface CCSearchBarPlugin () <UISearchBarDelegate>
+
 @property(nonatomic, strong) UIViewController *rootController;
 @property(nonatomic, strong) UISearchBar *searchBar;
 @property(nonatomic, strong) UIView *shadowView;
@@ -44,7 +45,6 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 @property(nonatomic, assign) BOOL isSpinnerVisible;
 @property(nonatomic, assign) BOOL isSearchBarVisible;
 @property(nonatomic, assign) BOOL isShadowViewVisible;
-
 
 @end
 
@@ -64,6 +64,7 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 }
 
 - (void)setupView {
+    
     [self.rootController.navigationController.navigationBar addSubview:self.searchBar];
     
     [self createShadowView];
@@ -72,22 +73,27 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 }
 
 - (RACSignal *)rac_searchButtonSignal {
+    
     return [self rac_signalForSelector:@selector(searchBarSearchButtonClicked:)];
 }
 
 - (RACSignal *)rac_cancelButtonSignal {
+    
     return [self rac_signalForSelector:@selector(searchBarCancelButtonClicked:)];
 }
 
 - (RACSignal *)textChangedSignal {
+    
     return [self rac_signalForSelector:@selector(searchBar:textDidChange:)];
 }
 
 - (RACSignal *)rac_searchFieldBecomeActive {
+    
     return [self rac_signalForSelector:@selector(searchBarTextDidBeginEditing:)];
 }
 
 - (RACSignal *)cancelSearchSignal {
+    
     return [RACSignal merge:@[
                               self.rac_cancelButtonSignal,
                               self.tapGestureRecognizer.rac_gestureSignal,
@@ -95,6 +101,7 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 }
 
 - (RACSignal *)rac_searchRequestFailed {
+    
     return [CCSearchDataStore sharedInstance].rac_operationFailed;
 }
 
@@ -185,6 +192,7 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 }
 
 - (void)createShadowView {
+    
     [self.rootController.view addSubview:self.shadowView];
     [self.shadowView addGestureRecognizer:self.tapGestureRecognizer];
     [self.shadowView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -197,6 +205,7 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 }
 
 - (UIView *)shadowView {
+    
     if (nil == _shadowView) {
         UIView *view = [UIView new];
         view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
@@ -212,6 +221,7 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 }
 
 - (UIActivityIndicatorView *)spinner {
+    
     if (nil == _spinner) {
         _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         _spinner.hidden = YES;
@@ -220,6 +230,7 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 }
 
 - (void)setIsSearchFieldActive:(BOOL)isSearchFieldActive {
+    
     if (isSearchFieldActive) {
         [self.searchBar becomeFirstResponder];
     }
@@ -229,6 +240,7 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 }
 
 - (void)setIsSearchBarVisible:(BOOL)isSearchBarVisible {
+    
     [UIView animateWithDuration:0.3
                      animations:^{
                          self.searchBar.alpha = isSearchBarVisible ? 1 : 0;
@@ -236,6 +248,7 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 }
 
 - (void)setIsShadowViewVisible:(BOOL)isShadowViewVisible {
+    
     [UIView animateWithDuration:0.3
                      animations:^{
                          self.shadowView.alpha = isShadowViewVisible ? 1 : 0;
@@ -243,6 +256,7 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 }
 
 - (void)setIsSpinnerVisible:(BOOL)isSpinnerVisible {
+    
     self.spinner.hidden = !isSpinnerVisible;
     if (isSpinnerVisible) {
         [self.spinner startAnimating];
@@ -254,6 +268,7 @@ static RACSignal *RACBoolStream(id <NSFastEnumeration> yesSignals, id <NSFastEnu
 
 
 - (UITapGestureRecognizer *)tapGestureRecognizer {
+    
     if (nil == _tapGestureRecognizer) {
         _tapGestureRecognizer = [[UITapGestureRecognizer alloc] init];
     }

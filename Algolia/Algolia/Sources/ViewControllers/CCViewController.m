@@ -9,17 +9,18 @@
 #import "CCViewController.h"
 #import "CCSearchResponse.h"
 
+static NSString * const kRecentSearchesKey = @"recent_searches";
+
 @implementation CCViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)saveRecentSearchesFromSearchResponse:(CCSearchResponse *)searchResponse {
     
     if (searchResponse.hits.count) {
-        NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:@"recent_searches"];
+        NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:kRecentSearchesKey];
         NSMutableArray *mutableArray = [NSMutableArray new];
         
         if (![array containsObject:searchResponse.query]) {
@@ -30,7 +31,7 @@
             [mutableArray addObject:string];
         }
         
-        [[NSUserDefaults standardUserDefaults] setObject:mutableArray.copy forKey:@"recent_searches"];
+        [[NSUserDefaults standardUserDefaults] setObject:mutableArray.copy forKey:kRecentSearchesKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }

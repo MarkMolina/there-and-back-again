@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     UITableViewController *tableViewController = self.childViewControllers.lastObject;
     tableViewController.tableView.delegate = self;

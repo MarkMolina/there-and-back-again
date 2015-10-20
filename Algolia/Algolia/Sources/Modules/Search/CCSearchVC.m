@@ -26,6 +26,12 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     CCDataSourceSearch
 };
 
+static NSString * const kRecentSearchesKey = @"recent_searches";
+static NSString * const kSearchSuggestionCell = @"CCSearchSuggestionCell";
+static NSString * const kCategoryCell = @"CCCategoryCell";
+
+static CGFloat const kHeiderHeigth = 77.f;
+
 @interface CCSearchVC () <CCSearchBarPluginDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) CCSearchBarPlugin *searchBarPlugin;
@@ -61,7 +67,7 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     [super viewDidAppear:animated];
     [self.tableView reloadData];
     
-    self.recentSearches = [[NSUserDefaults standardUserDefaults] objectForKey:@"recent_searches"];
+    self.recentSearches = [[NSUserDefaults standardUserDefaults] objectForKey:kRecentSearchesKey];
     if (!self.recentSearches) {
         self.recentSearches = [NSArray new];
     }
@@ -105,11 +111,11 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     self.searchBarPlugin = [[CCSearchBarPlugin alloc] initWithRootController:self];
     self.searchBarPlugin.delegate = self;
     
-    @weakify(self)
+    //@weakify(self)
     [self.searchBarPlugin.rac_searchRequestFailed subscribeNext:^(id x) {
-        @strongify(self)
+        //@strongify(self)
         
-        // Handle error
+        // TODO: Handle error
     }];
 }
 
@@ -131,11 +137,11 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
         make.edges.equalTo(self.view);
     }];
     
-    UINib *searchSuggestionCellNib = [UINib nibWithNibName:@"CCSearchSuggestionCell" bundle:nil];
-    [self.tableView registerNib:searchSuggestionCellNib forCellReuseIdentifier:@"CCSearchSuggestionCell"];
+    UINib *searchSuggestionCellNib = [UINib nibWithNibName:kSearchSuggestionCell bundle:nil];
+    [self.tableView registerNib:searchSuggestionCellNib forCellReuseIdentifier:kSearchSuggestionCell];
     
-    UINib *categoryCellNib = [UINib nibWithNibName:@"CCCategoryCell" bundle:nil];
-    [self.tableView registerNib:categoryCellNib forCellReuseIdentifier:@"CCCategoryCell"];
+    UINib *categoryCellNib = [UINib nibWithNibName:kCategoryCell bundle:nil];
+    [self.tableView registerNib:categoryCellNib forCellReuseIdentifier:kCategoryCell];
 }
 
 #pragma mark - CCSearchBarPlugin
@@ -155,9 +161,8 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
         
     } failure:^(NSError *error) {
         
+        // TODO: Handle error
     }];
-    
-    
 }
 
 - (void)searchBarCancelButtonClicked {
@@ -169,7 +174,7 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
 - (void)searchBarSearchButtonClicked {
     
     [self saveRecentSearchesFromSearchResponse:self.searchResponse];
-    self.recentSearches = [[NSUserDefaults standardUserDefaults] objectForKey:@"recent_searches"];
+    self.recentSearches = [[NSUserDefaults standardUserDefaults] objectForKey:kRecentSearchesKey];
     [self.tableView reloadData];
     
     [self pushSearchResultsVCWithQuery:self.searchResponse.query categories:nil];
@@ -206,7 +211,7 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     if ([self shouldShowRecentSearches]) {
-        return 77.f;
+        return kHeiderHeigth;
     }
     
     return 0.f;
@@ -224,7 +229,7 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (self.dataSourceType == CCDataSourceCategory) {
-        CCCategoryCell *categoryCell = [tableView dequeueReusableCellWithIdentifier:@"CCCategoryCell" forIndexPath:indexPath];
+        CCCategoryCell *categoryCell = [tableView dequeueReusableCellWithIdentifier:kCategoryCell forIndexPath:indexPath];
         
         CCCategory *category = [[CCSearchDataStore sharedInstance] retrieveCategories][indexPath.row];
         categoryCell.nameLabel.text = category.name;
@@ -234,14 +239,14 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     }
     
     if (![self shouldShowRecentSearches]) {
-        CCSearchSuggestionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CCSearchSuggestionCell" forIndexPath:indexPath];
+        CCSearchSuggestionCell *cell = [tableView dequeueReusableCellWithIdentifier:kSearchSuggestionCell forIndexPath:indexPath];
         
         CCHit *hit = self.searchResponse.hits[indexPath.row];
         cell.hit = hit;
         
         return cell;
     } else {
-        CCSearchSuggestionCell *tableviewCell = [tableView dequeueReusableCellWithIdentifier:@"CCSearchSuggestionCell"];
+        CCSearchSuggestionCell *tableviewCell = [tableView dequeueReusableCellWithIdentifier:kSearchSuggestionCell];
         
         tableviewCell.nameLabel.text = self.recentSearches[indexPath.row];
         
@@ -260,6 +265,12 @@ typedef NS_ENUM(NSInteger, CCDataSourceType) {
     }
     
     if (![self shouldShowRecentSearches]) {
+        
+        /*
+         * NOTE: Out of scope for this assignment
+         *  -
+         */
+        
         NSLog(@"Show details of this object");
         return;
     } else {

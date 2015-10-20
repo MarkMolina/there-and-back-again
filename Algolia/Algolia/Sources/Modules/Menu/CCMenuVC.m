@@ -8,6 +8,13 @@
 
 #import "CCMenuVC.h"
 
+
+/*
+ * NOTE: This view is out of scope for this assignment
+ *  -
+ */
+
+
 @interface CCMenuVC ()
 
 @end

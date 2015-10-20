@@ -15,6 +15,7 @@
     
     self = [super initWithJSONDictionary:jsonDict];
     if (self) {
+        
         _hitsPerPage = jsonDict[@"hitsPerPage"];
         _numberOfHits = jsonDict[@"nbHits"];
         _numberOfPages = jsonDict[@"nbPages"];

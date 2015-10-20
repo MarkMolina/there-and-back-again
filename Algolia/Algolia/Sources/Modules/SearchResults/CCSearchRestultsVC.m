@@ -19,6 +19,13 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <RESideMenu/RESideMenu.h>
 
+static NSString * const kFilterIcon = @"FilterIcon";
+static NSString * const kResultsCell = @"CCResultsCell";
+static NSString * const kFacetKey = @"categories";
+
+static CGFloat const kCellHeigth = 130.f;
+static NSUInteger const kNumberOfOffersLeftForPreload = 5;
+
 @interface CCSearchRestultsVC () <CCSearchBarPluginDelegate, CCFilterVCDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSString *query;
@@ -85,7 +92,7 @@
 
 - (void)createBarButtonItems {
     
-    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"FilterIcon"]
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kFilterIcon]
                                                                                  style:UIBarButtonItemStyleDone
                                                                                 target:self
                                                                                 action:@selector(showFilter:)],
@@ -98,11 +105,11 @@
     self.searchBarPlugin = [[CCSearchBarPlugin alloc] initWithRootController:self];
     self.searchBarPlugin.delegate = self;
     
-    @weakify(self)
+    //@weakify(self)
     [self.searchBarPlugin.rac_searchRequestFailed subscribeNext:^(id x) {
-        @strongify(self)
+        //@strongify(self)
         
-        // Handle error
+        // TODO: Handle error
     }];
 }
 
@@ -127,27 +134,27 @@
         make.edges.equalTo(self.view);
     }];
     
-    UINib *resultsCell = [UINib nibWithNibName:@"CCResultsCell" bundle:nil];
-    [self.tableView registerNib:resultsCell forCellReuseIdentifier:@"CCResultsCell"];
+    UINib *resultsCell = [UINib nibWithNibName:kResultsCell bundle:nil];
+    [self.tableView registerNib:resultsCell forCellReuseIdentifier:kResultsCell];
 }
 
 - (void)retrieveSearchResults {
     
     self.currentPage = 0;
-    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query facets:[self.categories facetsArrayWithKey:@"categories"] success:^(CCSearchResponse *searchResponse) {
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query facets:[self.categories facetsArrayWithKey:kFacetKey] success:^(CCSearchResponse *searchResponse) {
         
         self.searchResponse = searchResponse;
         [self.tableView reloadData];
     } failure:^(NSError *error) {
        
-        NSLog(@"Implement failure");
+        // TODO: Handle error
     }];
 }
 
 - (void)retrieveNextSearchResults {
     
     self.currentPage++;
-    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query page:self.currentPage facets:[self.categories facetsArrayWithKey:@"categories"] success:^(CCSearchResponse *searchResponse) {
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:self.query page:self.currentPage facets:[self.categories facetsArrayWithKey:kFacetKey] success:^(CCSearchResponse *searchResponse) {
         
         NSArray *array = [self.searchResponse.hits arrayByAddingObjectsFromArray:searchResponse.hits];
         self.searchResponse.hits = array;
@@ -156,7 +163,7 @@
         
     } failure:^(NSError *error) {
         
-        NSLog(@"Implement failure");
+        // TODO: Handle error
     }];
 }
 
@@ -169,12 +176,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    CCResultsCell *resultsCell = [tableView dequeueReusableCellWithIdentifier:@"CCResultsCell" forIndexPath:indexPath];
+    CCResultsCell *resultsCell = [tableView dequeueReusableCellWithIdentifier:kResultsCell forIndexPath:indexPath];
     
     CCHit *hit = self.searchResponse.hits[indexPath.row];
     [resultsCell setHit:hit];
     
-    if (indexPath.row + 5 >= self.searchResponse.hits.count) {
+    if (indexPath.row + kNumberOfOffersLeftForPreload >= self.searchResponse.hits.count) {
         [self retrieveNextSearchResults];
     }
     
@@ -183,7 +190,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 130.f;
+    return kCellHeigth;
 }
 
 #pragma mark - UITableViewDelegate
@@ -197,7 +204,7 @@
 - (void)searchBarTextDidChange:(NSString *)searchText {
     
     self.query = searchText;
-    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:searchText facets:[self.categories facetsArrayWithKey:@"categories"] success:^(CCSearchResponse *searchResponse) {
+    [[CCSearchDataStore sharedInstance] queryWithFullTextQuery:searchText facets:[self.categories facetsArrayWithKey:kFacetKey] success:^(CCSearchResponse *searchResponse) {
         
         self.searchResponse = searchResponse;
         [self.tableView reloadData];
@@ -205,8 +212,6 @@
     } failure:^(NSError *error) {
         
     }];
-    
-    
 }
 
 - (void)searchBarCancelButtonClicked {
